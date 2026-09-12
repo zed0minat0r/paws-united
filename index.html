@@ -6,10 +6,11 @@
 <title>Paws United Pet Sitting · Phoenixville, PA</title>
 <meta name="description" content="Drop-in visits, overnight stays and weekly pet care in Phoenixville, PA, for dogs, cats and everyone else. A licensed vet tech on the team for pets who need medication. Serving Royersford, Limerick, Collegeville, Spring City, Pottstown, Schwenksville and Kimberton.">
 <meta name="theme-color" content="#0F1A14">
+<link rel="icon" type="image/svg+xml" href="img/dog-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Paws United Pet Sitting","description":"In-home pet sitting, overnight stays and weekly care in Phoenixville, PA, with a licensed veterinary technician on the team.","telephone":"+1-000-000-0000","email":"hello@pawsunited.com","url":"https://pawsunited.com","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Phoenixville","addressRegion":"PA","postalCode":"19460","addressCountry":"US"},"areaServed":["Phoenixville","Royersford","Limerick","Collegeville","Spring City","Pottstown","Schwenksville","Kimberton"],"openingHours":"Mo-Su 07:00-21:00"}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Paws United Pet Sitting","description":"In-home pet sitting, overnight stays and weekly care in Phoenixville, PA, with a licensed veterinary technician on the team.","telephone":"+1-000-000-0000","email":"hello@pawsunited.com","url":"https://pawsunited.com","priceRange":"$$","logo":"https://zed0minat0r.github.io/paws-united/img/dog-mark.svg","address":{"@type":"PostalAddress","addressLocality":"Phoenixville","addressRegion":"PA","postalCode":"19460","addressCountry":"US"},"areaServed":["Phoenixville","Royersford","Limerick","Collegeville","Spring City","Pottstown","Schwenksville","Kimberton"],"openingHours":"Mo-Su 07:00-21:00"}
 </script>
 <style>
 /* Single deliberate dark world: a monitoring console for pets. Every color painted explicitly. */
@@ -64,8 +65,8 @@ a{color:inherit}
 .navwrap{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(15,26,20,.6);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 0}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
-.brand .mark{width:34px;height:34px;flex:none;border-radius:10px;background:linear-gradient(135deg,#A9CFA6,#EAC46A);display:grid;place-items:center;box-shadow:0 0 24px -4px rgba(169,207,166,.6)}
-.brand .mark svg{width:20px;height:20px}
+.brand .mark{width:46px;height:auto;flex:none;filter:drop-shadow(0 0 10px rgba(234,196,106,.55));transition:transform .3s ease}
+.brand:hover .mark{transform:translateX(3px)}
 .nav ul{display:none;gap:1.5rem;list-style:none;margin:0;padding:0;font-weight:600;font-size:.95rem}
 .nav ul a{text-decoration:none;color:var(--muted);transition:color .15s}
 .nav ul a:hover{color:var(--ink)}
@@ -203,6 +204,7 @@ section{padding:3rem 0}
 
 /* form */
 .book{display:grid;gap:1.6rem}
+.walker{width:150px;margin:-1.5rem 0 -.5rem -1rem;filter:drop-shadow(0 0 18px rgba(234,196,106,.45))}
 form{padding:1.3rem;display:grid;gap:.9rem}
 .row{display:grid;gap:.9rem}
 label{display:grid;gap:.35rem;font-weight:600;font-size:.88rem;color:var(--muted)}
@@ -219,6 +221,7 @@ textarea{min-height:110px;resize:vertical}
 footer{border-top:1px solid var(--line);padding:2rem 0;display:grid;gap:.6rem;color:var(--muted);font-size:.88rem}
 footer a{text-decoration:none}
 footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.foot-brand{display:flex;align-items:center;gap:.6rem}
 
 .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(15,26,20,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 
@@ -297,8 +300,8 @@ img{max-width:100%;display:block}
 .cta-pop h3{font-size:1.4rem}
 .cta-pop p{color:var(--muted);font-size:.95rem;max-width:30ch}
 .cta-pop .btn{margin-top:.4rem;width:100%}
-.cta-paw{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#A9CFA6,#EAC46A);display:grid;place-items:center;box-shadow:0 0 30px -4px rgba(234,196,106,.8)}
-.cta-paw svg{width:30px;height:30px;fill:var(--bg)}
+.cta-paw{width:72px;filter:drop-shadow(0 0 16px rgba(234,196,106,.7))}
+.cta-paw img{width:100%;height:auto}
 .cta-close{position:absolute;top:.5rem;right:.5rem;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:var(--muted);font-size:1.3rem;cursor:pointer;line-height:1}
 @keyframes ctapop{0%{opacity:0;transform:translateX(-50%) scale(.6)}100%{opacity:1;transform:translateX(-50%) scale(1)}}
 @media (min-width:860px){.cta-pop{bottom:2rem}}
@@ -377,7 +380,7 @@ img{max-width:100%;display:block}
 </div>
 <div class="cta-pop" id="ctapop" hidden>
   <button class="cta-close" type="button" aria-label="Close">×</button>
-  <div class="cta-paw"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></div>
+  <div class="cta-paw"><img src="img/dog-mark.svg" width="72" height="55" alt=""></div>
   <h3>Ready when you are.</h3>
   <p>The first step is a free meet &amp; greet at your place. Takes about 20 minutes.</p>
   <a class="btn btn-primary" href="#book">Schedule a meet &amp; greet</a>
@@ -386,7 +389,7 @@ img{max-width:100%;display:block}
 <div class="navwrap"><div class="wrap">
   <nav class="nav">
     <a class="brand" href="#top" aria-label="Paws United Pet Sitting">
-      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8" fill="#0F1A14"/><circle cx="6.2" cy="10" r="2" fill="#0F1A14"/><circle cx="10" cy="6.8" r="2" fill="#0F1A14"/><circle cx="14" cy="6.8" r="2" fill="#0F1A14"/><circle cx="17.8" cy="10" r="2" fill="#0F1A14"/></svg></span>
+      <img class="mark" src="img/dog-mark.svg" width="46" height="35" alt="">
       Paws United
     </a>
     <ul>
@@ -601,6 +604,7 @@ img{max-width:100%;display:block}
   <section id="book">
     <div class="book">
       <div class="section-head reveal" style="margin-bottom:0">
+        <div class="walker" id="walker" aria-hidden="true"></div>
         <p class="eyebrow">Get started</p>
         <h2 style="margin-top:.6rem">Let's meet your pet.</h2>
         <p>Tell us a little about them and we'll text you back today to set up a free meet &amp; greet. Or call <a href="tel:+10000000000"><span class="ph">(000) 000-0000</span></a>.</p>
@@ -637,7 +641,7 @@ img{max-width:100%;display:block}
 
 <div class="wrap">
   <footer>
-    <div>© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
+    <div class="foot-brand"><img src="img/dog-mark.svg" width="40" height="31" alt="" loading="lazy">© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
     <div class="legal"><a href="tel:+10000000000">(000) 000-0000</a><a href="mailto:hello@pawsunited.com">hello@pawsunited.com</a><a href="#">Service agreement</a><a href="#">Vet release form</a><a href="#faq">Cancellation policy</a><span>Photos via Unsplash</span></div>
   </footer>
 </div>
@@ -743,6 +747,12 @@ if (motionOK && "IntersectionObserver" in window) {
 } else {
   document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); });
 }
+// the same dog, walking in place beside the form (starts when it scrolls into view)
+if (window.lottie && document.getElementById("walker") && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const w = lottie.loadAnimation({ container: document.getElementById("walker"), renderer: "svg", loop: true, autoplay: false, path: "img/dog-walk.json" });
+  new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting ? w.play() : w.pause()), { threshold: .2 }).observe(document.getElementById("walker"));
+}
+
 // glow whatever is passing through the middle of the screen (phones can't hover)
 const glowables = () => [...document.querySelectorAll(".glass, .faq details, .map, .fold summary, .section-head, .areas span")].filter((el) => el.offsetParent !== null);
 let glowTick = false;
