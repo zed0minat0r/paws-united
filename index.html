@@ -280,13 +280,11 @@ img{max-width:100%;display:block}
 .runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity}
 .runner .lottie{transform-origin:50% 71%}
 /* bark: a bubble and two sound arcs by his nose, popped in by JS during the hop */
-.bark{position:absolute;left:78%;top:26%;pointer-events:none;opacity:0;transform:scale(.4) translateY(10px);transform-origin:0 100%}
+.bark{position:absolute;left:84%;top:8%;pointer-events:none;opacity:0;transform:scale(.4) translateY(10px);transform-origin:0 100%}
 .bark.on{animation:barkpop .55s cubic-bezier(.2,1.6,.3,1) forwards}
 .bark.off{transition:opacity .25s ease,transform .25s ease;opacity:0;transform:scale(.6) translateY(-6px)}
 @keyframes barkpop{to{opacity:1;transform:none}}
 .bubble{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(1rem,4.2vw,1.35rem);color:var(--bg);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35em .7em;border-radius:999px 999px 999px 4px;box-shadow:0 0 24px rgba(234,196,106,.6);letter-spacing:-.01em}
-.arc{position:absolute;left:-22px;top:6px;width:14px;height:22px;border:2px solid rgba(234,196,106,.8);border-left:0;border-radius:0 14px 14px 0;opacity:.9}
-.arc.a2{left:-32px;top:0;width:18px;height:34px;opacity:.5}
 .lottie{width:100%;aspect-ratio:1;filter:drop-shadow(0 0 28px rgba(234,196,106,.5)) saturate(.9)}
 .lottie svg{display:block}
 /* the environment: scenery behind, a deeper sidewalk, all anchored to the dog's foot line by JS */
@@ -308,13 +306,11 @@ img{max-width:100%;display:block}
 .runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity}
 .runner .lottie{transform-origin:50% 71%}
 /* bark: a bubble and two sound arcs by his nose, popped in by JS during the hop */
-.bark{position:absolute;left:78%;top:26%;pointer-events:none;opacity:0;transform:scale(.4) translateY(10px);transform-origin:0 100%}
+.bark{position:absolute;left:84%;top:8%;pointer-events:none;opacity:0;transform:scale(.4) translateY(10px);transform-origin:0 100%}
 .bark.on{animation:barkpop .55s cubic-bezier(.2,1.6,.3,1) forwards}
 .bark.off{transition:opacity .25s ease,transform .25s ease;opacity:0;transform:scale(.6) translateY(-6px)}
 @keyframes barkpop{to{opacity:1;transform:none}}
 .bubble{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(1rem,4.2vw,1.35rem);color:var(--bg);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35em .7em;border-radius:999px 999px 999px 4px;box-shadow:0 0 24px rgba(234,196,106,.6);letter-spacing:-.01em}
-.arc{position:absolute;left:-22px;top:6px;width:14px;height:22px;border:2px solid rgba(234,196,106,.8);border-left:0;border-radius:0 14px 14px 0;opacity:.9}
-.arc.a2{left:-32px;top:0;width:18px;height:34px;opacity:.5}
 .lottie{width:100%;aspect-ratio:1;filter:drop-shadow(0 0 28px rgba(234,196,106,.5)) saturate(.9)}
 .lottie svg{display:block}
 /* a side-view sidewalk: perspective top slab with seams, a curb face, a gold edge the dog walks along */
@@ -483,7 +479,7 @@ img{max-width:100%;display:block}
   <div class="splash-scene">
     <div class="stage">
     <div class="paws" id="paws" aria-hidden="true"></div>
-    <div class="runner" id="runner"><div class="lottie" id="lottie"></div><div class="bark" id="bark"><span class="arc a1"></span><span class="arc a2"></span><span class="bubble">Woof!</span></div></div>
+    <div class="runner" id="runner"><div class="lottie" id="lottie"></div><div class="bark" id="bark"><span class="bubble">Woof!</span></div></div>
     </div>
   </div>
   <div class="splash-word" aria-label="Paws United"><span>P</span><span>a</span><span>w</span><span>s</span><span class="sp">&nbsp;</span><span>U</span><span>n</span><span>i</span><span>t</span><span>e</span><span>d</span></div>
@@ -985,7 +981,6 @@ litPass();
   };
   const pawTimer = setInterval(() => { if (runner.dataset.moving) dropPaw(); }, 90);
   setTimeout(() => clearInterval(pawTimer), 7600);
-  setTimeout(burstLater, (T.start + T.inDur) * 1000 + 100);
   setTimeout(finish, (T.start + T.inDur + T.hold + T.outDur) * 1000 + 150);
   // particles: slow fireflies from the start, a gold burst when the dog stops
   const c = document.getElementById("burst"), ctx = c.getContext("2d");
