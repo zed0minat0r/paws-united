@@ -212,6 +212,7 @@ section{padding:3rem 0}
 .book{display:grid;gap:1.6rem}
 .walker{width:150px;margin:-1.5rem 0 -.5rem -1rem;filter:drop-shadow(0 0 18px rgba(234,196,106,.45))}
 form{padding:1.3rem;display:grid;gap:.9rem}
+form::after{display:none}
 .row{display:grid;gap:.9rem}
 label{display:grid;gap:.35rem;font-weight:600;font-size:.88rem;color:var(--muted)}
 input,select,textarea{font:inherit;font-size:16px;min-height:var(--tap);padding:.7rem .95rem;border:1px solid var(--line-2);border-radius:14px;background:rgba(0,0,0,.22);color:var(--ink);width:100%;transition:border-color .15s,box-shadow .15s}
@@ -342,6 +343,8 @@ img{max-width:100%;display:block}
 .cta-pop[hidden]{display:none}
 .cta-pop.hide{animation:none;transition:opacity .4s ease,transform .4s ease;opacity:0;transform:translateX(-50%) scale(.8)}
 .cta-pop h3{font-size:1.4rem}
+.offer{display:inline-block;font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-ink);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35rem .8rem;border-radius:999px;box-shadow:0 0 18px rgba(234,196,106,.5);animation:offerpulse 2.4s ease-in-out infinite}
+@keyframes offerpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 .cta-pop p{color:var(--muted);font-size:.95rem;max-width:30ch}
 .cta-pop .btn{margin-top:.4rem;width:100%}
 .cta-paw{width:72px;filter:drop-shadow(0 0 16px rgba(234,196,106,.7))}
@@ -350,6 +353,26 @@ img{max-width:100%;display:block}
 @keyframes ctapop{0%{opacity:0;transform:translateX(-50%) scale(.6)}100%{opacity:1;transform:translateX(-50%) scale(1)}}
 @media (min-width:860px){.cta-pop{bottom:2rem}}
 @media (prefers-reduced-motion:reduce){.splash{display:none}.cta-pop.show{animation:none;opacity:1;transform:translateX(-50%)}}
+
+/* step-by-step form: one question at a time, slides sideways */
+.wizard{overflow:hidden;gap:1rem}
+.wz-head{display:flex;align-items:center;gap:.8rem}
+.wz-count{font-weight:700;font-size:.85rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.wz-bar{flex:1;height:4px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.wz-bar i{display:block;height:100%;width:12%;background:linear-gradient(90deg,var(--mint),var(--amber));border-radius:999px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.wz-track{display:flex;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.wz-step{flex:0 0 100%;display:grid;gap:.7rem;align-content:start;min-height:150px;padding:.2rem .1rem;opacity:.35;transition:opacity .4s ease}
+.wz-step.active{opacity:1}
+.wz-step > label,.wz-q{font-family:var(--display);font-weight:700;font-size:1.25rem;color:var(--ink);letter-spacing:-.01em;display:block}
+.wz-step > label small{font-family:var(--body);font-weight:600;font-size:.8rem;color:var(--muted)}
+.wz-step input,.wz-step textarea{font-size:1.05rem}
+.wz-nav{display:grid;grid-template-columns:1fr 1.6fr;gap:.6rem}
+.wz-nav .btn[disabled]{opacity:.35;pointer-events:none}
+.wz-err{color:var(--amber);font-weight:700;font-size:.9rem;margin:-.4rem 0 0}
+.wz-summary{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem;font-size:.92rem}
+.wz-summary dt{color:var(--muted)}.wz-summary dd{margin:0;font-weight:600}
+.wz-done .btn{width:100%}
+@media (prefers-reduced-motion:reduce){.wz-track{transition:none}}
 
 /* collapsible sections */
 .fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -467,6 +490,7 @@ img{max-width:100%;display:block}
 <div class="cta-pop" id="ctapop" hidden>
   <button class="cta-close" type="button" aria-label="Close">×</button>
   <div class="cta-paw"><img src="img/logo-badge.svg" width="72" height="72" alt=""></div>
+  <span class="offer">New clients: 10% off your first booking</span>
   <h3>Ready when you are.</h3>
   <p>The first step is a free meet &amp; greet at your place. Takes about 20 minutes.</p>
   <a class="btn btn-primary" href="#book">Schedule a meet &amp; greet</a>
@@ -696,29 +720,27 @@ img{max-width:100%;display:block}
         <p>Tell us a little about them and we'll text you back today to set up a free meet &amp; greet. Or call <a href="tel:+10000000000"><span class="ph">(000) 000-0000</span></a>.</p>
         <p class="fine" style="margin-top:1rem">Existing clients: <a href="#">book through your client portal</a> <span class="ph">(DoTimely link)</span>.</p>
       </div>
-      <form class="glass reveal" action="#" method="post" onsubmit="event.preventDefault();this.querySelector('button').textContent='Request sent ✓';">
-        <div class="row">
-          <label>Your name<input type="text" name="name" required autocomplete="name"></label>
-          <label>Phone<input type="tel" name="phone" required autocomplete="tel"></label>
+      <form class="glass reveal wizard" id="wizard" action="#" method="post" novalidate>
+        <div class="wz-head"><span class="wz-count" id="wzcount">1 / 8</span><span class="wz-bar"><i id="wzbar"></i></span></div>
+        <div class="wz-track" id="wztrack">
+          <section class="wz-step" data-key="name"><label for="f-name">What's your name?</label><input id="f-name" type="text" name="name" required autocomplete="name" placeholder="First and last"></section>
+          <section class="wz-step" data-key="phone"><label for="f-phone">Best number to text you?</label><input id="f-phone" type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(610) 555-0100"></section>
+          <section class="wz-step" data-key="email"><label for="f-email">And your email?</label><input id="f-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com"></section>
+          <section class="wz-step" data-key="address"><label for="f-address">Where's home?</label><input id="f-address" type="text" name="address" required autocomplete="street-address" placeholder="Street or just the town"></section>
+          <section class="wz-step" data-key="pets"><label for="f-pets">Who are we meeting?</label><input id="f-pets" type="text" name="pets" required placeholder="e.g. Biscuit, 3 yr lab · Mochi, 11 yr cat"></section>
+          <section class="wz-step" data-key="service"><span class="wz-q">What do you need?</span>
+            <div class="checks-inline">
+              <label><input type="checkbox" name="svc" value="Drop-in visits">Drop-in visits</label>
+              <label><input type="checkbox" name="svc" value="Meds or injections">Meds or injections</label>
+              <label><input type="checkbox" name="svc" value="Overnights">Overnights</label>
+              <label><input type="checkbox" name="svc" value="Weekly recurring">Weekly recurring</label>
+            </div></section>
+          <section class="wz-step" data-key="dates"><label for="f-dates">When?</label><input id="f-dates" type="text" name="dates" required placeholder="e.g. Oct 3-6, or Mon/Wed/Fri midday"></section>
+          <section class="wz-step" data-key="notes"><label for="f-notes">Anything we should know? <small>(optional)</small></label><textarea id="f-notes" name="notes" placeholder="Quirks, routine, any meds, where the treats are"></textarea></section>
+          <section class="wz-step wz-done"><span class="wz-q">All set. Send it over.</span><dl class="wz-summary" id="wzsummary"></dl><a class="btn btn-primary" id="wzsend" href="#">Send request by email</a><p class="fine">Opens your mail app with everything filled in. We text back the same day.</p></section>
         </div>
-        <div class="row">
-          <label>Email<input type="email" name="email" required autocomplete="email"></label>
-          <label>Address or town<input type="text" name="address" required autocomplete="street-address"></label>
-        </div>
-        <label>Your pets<input type="text" name="pets" required placeholder="e.g. Biscuit, 3 yr lab · Mochi, 11 yr cat"></label>
-        <div>
-          <span style="font-weight:600;font-size:.88rem;color:var(--muted)">What do you need?</span>
-          <div class="checks-inline" style="margin-top:.5rem">
-            <label><input type="checkbox" name="svc" value="dropin">Drop-in visits</label>
-            <label><input type="checkbox" name="svc" value="medical">Meds or injections</label>
-            <label><input type="checkbox" name="svc" value="overnight">Overnights</label>
-            <label><input type="checkbox" name="svc" value="weekly">Weekly recurring</label>
-          </div>
-        </div>
-        <label>Dates<input type="text" name="dates" placeholder="e.g. Oct 3-6, or Mon/Wed/Fri midday"></label>
-        <label>Anything we should know<textarea name="notes" placeholder="Quirks, routine, any meds, where the treats are"></textarea></label>
-        <button class="btn btn-primary" type="submit">Request a meet &amp; greet</button>
-        <p class="fine">No payment now. We confirm everything at the meet &amp; greet.</p>
+        <div class="wz-nav"><button type="button" class="btn btn-ghost" id="wzback">Back</button><button type="button" class="btn btn-primary" id="wznext">Next</button></div>
+        <p class="wz-err" id="wzerr" hidden>Needed before we can move on.</p>
       </form>
     </div>
   </section>
@@ -833,6 +855,33 @@ if (motionOK && "IntersectionObserver" in window) {
 } else {
   document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); });
 }
+// step-by-step booking form -> one email with all the answers
+(function () {
+  const wz = document.getElementById("wizard"); if (!wz) return;
+  const TO = "hello@pawsunited.com"; // TODO: real inbox
+  const track = document.getElementById("wztrack"), steps = [...track.children], back = document.getElementById("wzback"), next = document.getElementById("wznext"), bar = document.getElementById("wzbar"), count = document.getElementById("wzcount"), err = document.getElementById("wzerr");
+  const n = steps.length; let i = 0;
+  const answers = () => {
+    const a = {}; steps.forEach((st) => { const k = st.dataset.key; if (!k) return; if (k === "service") a[k] = [...st.querySelectorAll("input:checked")].map((c) => c.value).join(", "); else a[k] = st.querySelector("input,textarea").value.trim(); }); return a;
+  };
+  const valid = (st) => { const k = st.dataset.key; if (!k) return true; if (k === "service") return st.querySelector("input:checked") !== null; const f = st.querySelector("input,textarea"); return !f.required || (f.value.trim() && f.checkValidity()); };
+  const labels = { name: "Name", phone: "Phone", email: "Email", address: "Home", pets: "Pets", service: "Needs", dates: "When", notes: "Notes" };
+  const show = (k) => {
+    i = Math.max(0, Math.min(n - 1, k)); track.style.transform = `translateX(-${i * 100}%)`;
+    steps.forEach((st, j) => st.classList.toggle("active", j === i)); bar.style.width = ((i + 1) / n * 100) + "%"; count.textContent = `${i + 1} / ${n}`;
+    back.disabled = i === 0; next.hidden = i === n - 1; err.hidden = true;
+    if (i === n - 1) { const a = answers(); document.getElementById("wzsummary").innerHTML = Object.keys(labels).filter((x) => a[x]).map((x) => `<dt>${labels[x]}</dt><dd>${a[x].replace(/</g, "&lt;")}</dd>`).join("");
+      const body = Object.keys(labels).filter((x) => a[x]).map((x) => `${labels[x]}: ${a[x]}`).join("\n") + "\n\nSent from pawsunited.com";
+      document.getElementById("wzsend").href = `mailto:${TO}?subject=${encodeURIComponent("Meet & greet request - " + a.name)}&body=${encodeURIComponent(body)}`; }
+    else setTimeout(() => { const f = steps[i].querySelector("input,textarea"); if (f && f.type !== "checkbox") f.focus({ preventScroll: true }); }, 350);
+  };
+  next.addEventListener("click", () => { if (!valid(steps[i])) { err.hidden = false; steps[i].querySelector("input,textarea").focus(); return; } show(i + 1); });
+  back.addEventListener("click", () => show(i - 1));
+  wz.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") { e.preventDefault(); if (i < n - 1) next.click(); } });
+  wz.addEventListener("submit", (e) => e.preventDefault());
+  show(0);
+})();
+
 // the same dog, walking in place beside the form (starts when it scrolls into view)
 if (window.lottie && document.getElementById("walker") && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const w = lottie.loadAnimation({ container: document.getElementById("walker"), renderer: "svg", loop: true, autoplay: false, path: "img/dog-walk.json" });
@@ -858,6 +907,7 @@ litPass();
 // splash sequence: outline draws -> fill + burst -> name -> lift away -> schedule box pops up
 (function () {
   const splash = document.getElementById("splash"), pop = document.getElementById("ctapop");
+  let burstLater = () => {};
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const showPop = () => { pop.hidden = false; requestAnimationFrame(() => pop.classList.add("show")); };
   const hidePop = () => { pop.classList.remove("show"); pop.classList.add("hide"); setTimeout(() => { pop.hidden = true; }, 450); };
@@ -930,7 +980,6 @@ litPass();
   setTimeout(() => clearInterval(pawTimer), 7600);
   setTimeout(burstLater, (T.start + T.inDur) * 1000 + 100);
   setTimeout(finish, (T.start + T.inDur + T.hold + T.outDur) * 1000 + 150);
-  let burstLater = () => {};
   // particles: slow fireflies from the start, a gold burst when the dog stops
   const c = document.getElementById("burst"), ctx = c.getContext("2d");
   const dpr = Math.min(2, devicePixelRatio || 1); c.width = innerWidth * dpr; c.height = innerHeight * dpr; ctx.scale(dpr, dpr);
