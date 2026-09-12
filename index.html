@@ -242,18 +242,18 @@ img{max-width:100%;display:block}
 
 /* gold glow on hover / focus, for any box or blurb */
 .glass,.faq details,.map,.fold summary .section-head,.need,.svc{transition:box-shadow .35s ease,border-color .35s ease,transform .2s ease}
-.glass:hover,.faq details:hover,.map:hover,form:focus-within{border-color:rgba(234,196,106,.55);box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 48px -6px rgba(234,196,106,.55),0 24px 50px -30px rgba(0,0,0,.7);animation:goldpulse 2.2s ease-in-out infinite}
-.glass:hover::before{background:linear-gradient(135deg,rgba(234,196,106,.9),rgba(234,196,106,.15) 45%,rgba(234,196,106,.9));background-size:200% 200%;animation:goldsweep 2.4s linear infinite}
-.fold summary:hover .chev{border-color:rgba(234,196,106,.7);box-shadow:0 0 22px -2px rgba(234,196,106,.7)}
-.fold summary:hover h2 .w{color:var(--amber);text-shadow:0 0 18px rgba(234,196,106,.45)}
+.glass:hover,.glass.lit,.faq details:hover,.faq details.lit,.map:hover,.map.lit,form:focus-within{border-color:rgba(234,196,106,.55);box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 48px -6px rgba(234,196,106,.55),0 24px 50px -30px rgba(0,0,0,.7);animation:goldpulse 2.2s ease-in-out infinite}
+.glass:hover::before,.glass.lit::before{background:linear-gradient(135deg,rgba(234,196,106,.9),rgba(234,196,106,.15) 45%,rgba(234,196,106,.9));background-size:200% 200%;animation:goldsweep 2.4s linear infinite}
+.fold summary:hover .chev,.fold summary.lit .chev{border-color:rgba(234,196,106,.7);box-shadow:0 0 22px -2px rgba(234,196,106,.7)}
+.fold summary:hover h2 .w,.fold summary.lit h2 .w{color:var(--amber);text-shadow:0 0 18px rgba(234,196,106,.45)}
 .fold summary h2 .w{transition:color .3s ease,text-shadow .3s ease}
-.section-head:hover .eyebrow{color:var(--amber);text-shadow:0 0 12px rgba(234,196,106,.6)}
+.section-head:hover .eyebrow,.section-head.lit .eyebrow{color:var(--amber);text-shadow:0 0 12px rgba(234,196,106,.6)}
 .eyebrow{transition:color .3s ease,text-shadow .3s ease}
-.areas span:hover{border-color:var(--amber);color:var(--amber);box-shadow:0 0 18px -2px rgba(234,196,106,.6)}
+.areas span:hover,.areas span.lit{border-color:var(--amber);color:var(--amber);box-shadow:0 0 18px -2px rgba(234,196,106,.6)}
 .areas span{transition:box-shadow .3s ease,border-color .3s ease,color .3s ease}
 @keyframes goldpulse{0%,100%{box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 40px -8px rgba(234,196,106,.45),0 24px 50px -30px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 1px rgba(234,196,106,.6),0 0 64px -4px rgba(234,196,106,.75),0 24px 50px -30px rgba(0,0,0,.7)}}
 @keyframes goldsweep{to{background-position:200% 200%}}
-@media (prefers-reduced-motion:reduce){.glass:hover,.faq details:hover,.map:hover,form:focus-within{animation:none}.glass:hover::before{animation:none}}
+@media (prefers-reduced-motion:reduce){.glass:hover,.glass.lit,.faq details:hover,.faq details.lit,.map:hover,.map.lit,form:focus-within{animation:none}.glass:hover::before,.glass.lit::before{animation:none}}
 
 /* collapsible sections */
 .fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -673,6 +673,22 @@ if (motionOK && "IntersectionObserver" in window) {
 } else {
   document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); });
 }
+// glow whatever is passing through the middle of the screen (phones can't hover)
+const glowables = () => [...document.querySelectorAll(".glass, .faq details, .map, .fold summary, .section-head, .areas span")].filter((el) => el.offsetParent !== null);
+let glowTick = false;
+function litPass() {
+  glowTick = false;
+  const mid = innerHeight * 0.5, band = innerHeight * 0.14;
+  glowables().forEach((el) => {
+    const r = el.getBoundingClientRect();
+    const on = r.top < mid + band && r.bottom > mid - band;
+    el.classList.toggle("lit", on);
+  });
+}
+addEventListener("scroll", () => { if (!glowTick) { glowTick = true; requestAnimationFrame(litPass); } }, { passive: true });
+addEventListener("resize", litPass);
+litPass();
+
 function countUp(el) {
   if (el.dataset.done) return; el.dataset.done = 1;
   const to = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || "", t0 = performance.now();
