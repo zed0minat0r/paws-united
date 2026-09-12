@@ -6,11 +6,12 @@
 <title>Paws United Pet Sitting · Phoenixville, PA</title>
 <meta name="description" content="Drop-in visits, overnight stays and weekly pet care in Phoenixville, PA, for dogs, cats and everyone else. A licensed vet tech on the team for pets who need medication. Serving Royersford, Limerick, Collegeville, Spring City, Pottstown, Schwenksville and Kimberton.">
 <meta name="theme-color" content="#0F1A14">
-<link rel="icon" type="image/svg+xml" href="img/dog-mark.svg">
+<link rel="icon" type="image/svg+xml" href="img/logo-badge.svg">
+<link rel="apple-touch-icon" href="img/logo-badge.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"Paws United Pet Sitting","description":"In-home pet sitting, overnight stays and weekly care in Phoenixville, PA, with a licensed veterinary technician on the team.","telephone":"+1-000-000-0000","email":"hello@pawsunited.com","url":"https://pawsunited.com","priceRange":"$$","logo":"https://zed0minat0r.github.io/paws-united/img/dog-mark.svg","address":{"@type":"PostalAddress","addressLocality":"Phoenixville","addressRegion":"PA","postalCode":"19460","addressCountry":"US"},"areaServed":["Phoenixville","Royersford","Limerick","Collegeville","Spring City","Pottstown","Schwenksville","Kimberton"],"openingHours":"Mo-Su 07:00-21:00"}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Paws United Pet Sitting","description":"In-home pet sitting, overnight stays and weekly care in Phoenixville, PA, with a licensed veterinary technician on the team.","telephone":"+1-000-000-0000","email":"hello@pawsunited.com","url":"https://pawsunited.com","priceRange":"$$","logo":"https://zed0minat0r.github.io/paws-united/img/logo-badge.svg","address":{"@type":"PostalAddress","addressLocality":"Phoenixville","addressRegion":"PA","postalCode":"19460","addressCountry":"US"},"areaServed":["Phoenixville","Royersford","Limerick","Collegeville","Spring City","Pottstown","Schwenksville","Kimberton"],"openingHours":"Mo-Su 07:00-21:00"}
 </script>
 <style>
 /* Single deliberate dark world: a monitoring console for pets. Every color painted explicitly. */
@@ -64,8 +65,13 @@ a{color:inherit}
 /* nav */
 .navwrap{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(15,26,20,.6);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 0}
-.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
-.brand .mark{width:46px;height:auto;flex:none;filter:drop-shadow(0 0 10px rgba(234,196,106,.55));transition:transform .3s ease}
+.brand{display:flex;align-items:flex-end;gap:.5rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em;position:relative;padding-bottom:.3rem}
+.brand::after{content:"";position:absolute;left:4px;right:0;bottom:0;height:1.5px;background:linear-gradient(90deg,rgba(234,196,106,.9),rgba(234,196,106,0));border-radius:2px}
+.wordmark{display:flex;flex-direction:column;line-height:1;gap:.22rem;padding-bottom:.25rem}
+.wm-name{font-size:1.2rem;background:linear-gradient(92deg,#F1F5EC,#EAC46A 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wm-sub{font-family:var(--body);font-weight:700;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
+@media (max-width:420px){.wm-sub{display:none}.wm-name{font-size:1.05rem}.brand .mark{width:46px}}
+.brand .mark{width:56px;height:auto;flex:none;margin-bottom:-.1rem;filter:drop-shadow(0 0 10px rgba(234,196,106,.55));transition:transform .3s ease}
 .brand:hover .mark{transform:translateX(3px)}
 .nav ul{display:none;gap:1.5rem;list-style:none;margin:0;padding:0;font-weight:600;font-size:.95rem}
 .nav ul a{text-decoration:none;color:var(--muted);transition:color .15s}
@@ -375,12 +381,12 @@ img{max-width:100%;display:block}
     </div>
   </div>
   <div class="splash-word" aria-label="Paws United"><span>P</span><span>a</span><span>w</span><span>s</span><span class="sp">&nbsp;</span><span>U</span><span>n</span><span>i</span><span>t</span><span>e</span><span>d</span></div>
-  <div class="splash-sub">Pet sitting in Phoenixville, PA</div>
+  <div class="splash-sub">Pet sitting · Phoenixville, PA</div>
   <button class="splash-skip" type="button">Skip</button>
 </div>
 <div class="cta-pop" id="ctapop" hidden>
   <button class="cta-close" type="button" aria-label="Close">×</button>
-  <div class="cta-paw"><img src="img/dog-mark.svg" width="72" height="55" alt=""></div>
+  <div class="cta-paw"><img src="img/logo-badge.svg" width="72" height="72" alt=""></div>
   <h3>Ready when you are.</h3>
   <p>The first step is a free meet &amp; greet at your place. Takes about 20 minutes.</p>
   <a class="btn btn-primary" href="#book">Schedule a meet &amp; greet</a>
@@ -389,8 +395,8 @@ img{max-width:100%;display:block}
 <div class="navwrap"><div class="wrap">
   <nav class="nav">
     <a class="brand" href="#top" aria-label="Paws United Pet Sitting">
-      <img class="mark" src="img/dog-mark.svg" width="46" height="35" alt="">
-      Paws United
+      <img class="mark" src="img/dog-mark.svg" width="56" height="43" alt="">
+      <span class="wordmark"><span class="wm-name">Paws United</span><span class="wm-sub">Pet sitting · Phoenixville, PA</span></span>
     </a>
     <ul>
       <li><a href="#services">Services</a></li>
@@ -641,7 +647,7 @@ img{max-width:100%;display:block}
 
 <div class="wrap">
   <footer>
-    <div class="foot-brand"><img src="img/dog-mark.svg" width="40" height="31" alt="" loading="lazy">© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
+    <div class="foot-brand"><img src="img/logo-badge.svg" width="40" height="40" alt="" loading="lazy">© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
     <div class="legal"><a href="tel:+10000000000">(000) 000-0000</a><a href="mailto:hello@pawsunited.com">hello@pawsunited.com</a><a href="#">Service agreement</a><a href="#">Vet release form</a><a href="#faq">Cancellation policy</a><span>Photos via Unsplash</span></div>
   </footer>
 </div>
