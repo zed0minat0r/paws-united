@@ -262,17 +262,20 @@ img{max-width:100%;display:block}
 .splash canvas{position:absolute;inset:0;width:100%;height:100%}
 .splash-scene{position:relative;width:min(420px,80vw,46vh)}
 .stage{position:relative}
-.paws{position:absolute;left:0;right:0;bottom:19%;height:0;pointer-events:none;z-index:0}
+.paws{position:absolute;left:0;right:0;bottom:16.5%;height:0;pointer-events:none;z-index:0}
 .pp{position:absolute;bottom:0;width:6%;aspect-ratio:1;opacity:0;transform:scale(0) rotate(var(--rot,-12deg));animation:pawpop .5s cubic-bezier(.2,1.6,.3,1) forwards}
 .pp:nth-child(even){--rot:12deg;bottom:14px}
 .pp svg{width:100%;height:100%;fill:rgba(234,196,106,.85);filter:drop-shadow(0 0 6px rgba(234,196,106,.7))}
 @keyframes pawpop{to{opacity:.9;transform:scale(1) rotate(var(--rot,-12deg))}}
 .splash.ready .pp{transition:opacity 1.2s ease;opacity:.25}
-.runner{position:relative;z-index:1;transform:translateX(-150%);animation:runin 2.7s cubic-bezier(.3,.6,.25,1) .3s forwards}
-@keyframes runin{to{transform:translateX(0)}}
+.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%)}
+.runner.in{animation:walkin 2.7s cubic-bezier(.3,.6,.25,1) forwards}
+.runner.out{animation:walkout 2.2s cubic-bezier(.6,.1,.8,.6) forwards}
+@keyframes walkin{0%{opacity:0;transform:translateX(-150%)}18%{opacity:1}100%{opacity:1;transform:translateX(0)}}
+@keyframes walkout{0%{opacity:1;transform:translateX(0)}80%{opacity:1}100%{opacity:0;transform:translateX(160%)}}
 .lottie{width:100%;aspect-ratio:1;filter:drop-shadow(0 0 28px rgba(234,196,106,.5)) saturate(.9)}
 .lottie svg{display:block}
-.splash .ground{height:2px;margin:.2rem auto 0;width:80%;background:linear-gradient(90deg,transparent,rgba(234,196,106,.9),transparent);transform:scaleX(0);animation:groundin 1.2s ease .1s forwards;box-shadow:0 0 24px rgba(234,196,106,.6)}
+.splash .ground{position:absolute;left:10%;right:10%;bottom:15.5%;height:2px;background:linear-gradient(90deg,transparent,rgba(234,196,106,.9),transparent);transform:scaleX(0);animation:groundin 1.2s ease .1s forwards;box-shadow:0 0 24px rgba(234,196,106,.6)}
 @keyframes groundin{to{transform:scaleX(1)}}
 .splash-word{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,9vw,4.2rem);letter-spacing:-.03em;margin-top:.6rem;display:flex;position:relative}
 .splash-word span{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.5em) scale(.9);animation:letter .9s cubic-bezier(.2,1,.3,1) forwards;background:linear-gradient(92deg,#F1F5EC,#EAC46A 60%,#A9CFA6);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -365,6 +368,7 @@ img{max-width:100%;display:block}
     <div class="stage">
     <div class="paws" aria-hidden="true"><span class="pp" style="left:6.0%;animation-delay:0.25s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:17.5%;animation-delay:0.41s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:29.0%;animation-delay:0.57s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:40.5%;animation-delay:0.73s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:52.0%;animation-delay:0.89s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:63.5%;animation-delay:1.05s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:75.0%;animation-delay:1.21s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span><span class="pp" style="left:86.5%;animation-delay:1.37s"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg></span></div>
     <div class="runner" id="runner"><div class="lottie" id="lottie"></div></div>
+    <div class="ground"></div>
     </div>
   </div>
   <div class="splash-word" aria-label="Paws United"><span>P</span><span>a</span><span>w</span><span>s</span><span class="sp">&nbsp;</span><span>U</span><span>n</span><span>i</span><span>t</span><span>e</span><span>d</span></div>
@@ -768,16 +772,17 @@ litPass();
   const finish = () => { if (finished) return; finished = true; splash.classList.add("done"); document.body.style.overflow = ""; document.querySelector("main").classList.add("page-enter"); setTimeout(() => splash.remove(), 1100); setTimeout(showPop, 1000); };
   document.body.style.overflow = "hidden";
   splash.querySelector(".splash-skip").addEventListener("click", finish);
-  // the dog walks in (real walk cycle), stops in the middle, then the name arrives
+  // the dog walks on (real walk cycle), stops for the name, then walks off; the splash lifts behind it
   const runner = document.getElementById("runner");
   let dog = null;
   if (window.lottie) {
     dog = lottie.loadAnimation({ container: document.getElementById("lottie"), renderer: "svg", loop: true, autoplay: false, path: "img/dog-walk.json" });
     dog.setSpeed(1.15);
-    dog.addEventListener("DOMLoaded", () => { setTimeout(() => dog.play(), 250); });
   }
-  setTimeout(() => { if (dog) { dog.loop = false; dog.addEventListener("complete", () => dog.goToAndStop(0, true)); } splash.classList.add("ready"); }, 2900);
-  setTimeout(finish, 6000);
+  setTimeout(() => { runner.classList.add("in"); if (dog) dog.play(); }, 300);
+  setTimeout(() => { if (dog) { dog.loop = false; dog.addEventListener("complete", () => dog.goToAndStop(0, true)); } splash.classList.add("ready"); }, 2950);
+  setTimeout(() => { if (dog) { dog.loop = true; dog.goToAndPlay(0, true); } runner.classList.remove("in"); runner.classList.add("out"); }, 5300);
+  setTimeout(finish, 7000);
   // particles: slow fireflies from the start, a gold burst when the fill lands
   const c = document.getElementById("burst"), ctx = c.getContext("2d");
   const dpr = Math.min(2, devicePixelRatio || 1); c.width = innerWidth * dpr; c.height = innerHeight * dpr; ctx.scale(dpr, dpr);
@@ -789,7 +794,7 @@ litPass();
   (function frame() {
     if (!document.body.contains(c)) return;
     const el = (performance.now() - t0) / 1000;
-    if (el > .45 && el < 2.9) { const rr = runner.getBoundingClientRect(); for (let i = 0; i < 3; i++) parts.push({ x: rr.left + rr.width * (0.18 + Math.random() * .12), y: rr.bottom - rr.height * .12 - Math.random() * 10, vx: -(1.5 + Math.random() * 3), vy: -(.5 + Math.random() * 1.8), r: 1 + Math.random() * 2.2, life: .9, decay: .03, col: "234,196,106", g: .05 }); }
+    if ((el > .45 && el < 2.9) || (el > 5.35 && el < 7.2)) { const rr = runner.getBoundingClientRect(); for (let i = 0; i < 3; i++) parts.push({ x: rr.left + rr.width * (0.18 + Math.random() * .12), y: rr.bottom - rr.height * .12 - Math.random() * 10, vx: -(1.5 + Math.random() * 3), vy: -(.5 + Math.random() * 1.8), r: 1 + Math.random() * 2.2, life: .9, decay: .03, col: "234,196,106", g: .05 }); }
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     parts.forEach((p) => { if (p.life <= 0) return; p.x += p.vx; p.y += p.vy; p.vy += p.g; p.vx *= .99; p.life -= p.decay; ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0, p.r * p.life), 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.col},${Math.max(0, p.life)})`; ctx.fill(); });
     requestAnimationFrame(frame);
