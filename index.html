@@ -232,7 +232,7 @@ img{max-width:100%;display:block}
 .band-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;max-height:340px}
 
 /* animated headings: words rise in one after another, gradient text shimmers */
-.motion h1 .w,.motion h2 .w{display:inline-block;padding-bottom:.08em;margin-bottom:-.08em;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.motion h1 .w,.motion h2 .w{display:inline-block;padding-bottom:.08em;margin-bottom:-.08em;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),color .9s ease,text-shadow .9s ease}
 .motion .pre h2 .w,.motion h1.pre .w{opacity:0;transform:translateY(.6em) rotate(2deg)}
 .motion .grad{background-size:200% 100%;animation:shimmer 6s ease-in-out infinite}
 @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
@@ -240,20 +240,20 @@ img{max-width:100%;display:block}
 .motion .eyebrow::before{content:"";position:absolute;left:0;top:50%;height:2px;width:1.1rem;background:var(--mint);transform-origin:left;transform:scaleX(0);transition:transform .7s ease .2s}
 .motion .eyebrow.on::before,.motion .section-head:not(.pre) .eyebrow::before{transform:scaleX(1)}
 
-/* gold glow on hover / focus, for any box or blurb */
-.glass,.faq details,.map,.fold summary .section-head,.need,.svc{transition:box-shadow .35s ease,border-color .35s ease,transform .2s ease}
-.glass:hover,.glass.lit,.faq details:hover,.faq details.lit,.map:hover,.map.lit,form:focus-within{border-color:rgba(234,196,106,.55);box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 48px -6px rgba(234,196,106,.55),0 24px 50px -30px rgba(0,0,0,.7);animation:goldpulse 2.2s ease-in-out infinite}
-.glass:hover::before,.glass.lit::before{background:linear-gradient(135deg,rgba(234,196,106,.9),rgba(234,196,106,.15) 45%,rgba(234,196,106,.9));background-size:200% 200%;animation:goldsweep 2.4s linear infinite}
+/* gold glow: a separate layer that fades in and breathes, so nothing pops */
+.glass,.faq details,.map,.areas span,form{position:relative}
+.areas span{display:inline-block}
+.glass::after,.faq details::after,.map::after,.areas span::after,form::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;border:1px solid rgba(234,196,106,.7);box-shadow:0 0 0 1px rgba(234,196,106,.25),0 0 60px -4px rgba(234,196,106,.7),inset 0 0 40px -20px rgba(234,196,106,.35);opacity:0;transition:opacity 1.1s ease}
+.glass:hover::after,.glass.lit::after,.faq details:hover::after,.faq details.lit::after,.map:hover::after,.map.lit::after,.areas span:hover::after,.areas span.lit::after,form:focus-within::after{opacity:1;animation:goldbreathe 3s ease-in-out 1.1s infinite}
+@keyframes goldbreathe{0%,100%{opacity:1}50%{opacity:.5}}
+.fold .chev{transition:transform .3s ease,background .2s,border-color .9s ease,box-shadow .9s ease}
 .fold summary:hover .chev,.fold summary.lit .chev{border-color:rgba(234,196,106,.7);box-shadow:0 0 22px -2px rgba(234,196,106,.7)}
+.fold summary h2 .w,.eyebrow{transition:color .9s ease,text-shadow .9s ease}
 .fold summary:hover h2 .w,.fold summary.lit h2 .w{color:var(--amber);text-shadow:0 0 18px rgba(234,196,106,.45)}
-.fold summary h2 .w{transition:color .3s ease,text-shadow .3s ease}
 .section-head:hover .eyebrow,.section-head.lit .eyebrow{color:var(--amber);text-shadow:0 0 12px rgba(234,196,106,.6)}
-.eyebrow{transition:color .3s ease,text-shadow .3s ease}
-.areas span:hover,.areas span.lit{border-color:var(--amber);color:var(--amber);box-shadow:0 0 18px -2px rgba(234,196,106,.6)}
-.areas span{transition:box-shadow .3s ease,border-color .3s ease,color .3s ease}
-@keyframes goldpulse{0%,100%{box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 40px -8px rgba(234,196,106,.45),0 24px 50px -30px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 1px rgba(234,196,106,.6),0 0 64px -4px rgba(234,196,106,.75),0 24px 50px -30px rgba(0,0,0,.7)}}
-@keyframes goldsweep{to{background-position:200% 200%}}
-@media (prefers-reduced-motion:reduce){.glass:hover,.glass.lit,.faq details:hover,.faq details.lit,.map:hover,.map.lit,form:focus-within{animation:none}.glass:hover::before,.glass.lit::before{animation:none}}
+.areas span{transition:color .9s ease,border-color .9s ease}
+.areas span:hover,.areas span.lit{color:var(--amber)}
+@media (prefers-reduced-motion:reduce){.glass::after,.faq details::after,.map::after,.areas span::after,form::after{animation:none!important;transition:none}}
 
 /* collapsible sections */
 .fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -678,7 +678,7 @@ const glowables = () => [...document.querySelectorAll(".glass, .faq details, .ma
 let glowTick = false;
 function litPass() {
   glowTick = false;
-  const mid = innerHeight * 0.5, band = innerHeight * 0.14;
+  const mid = innerHeight * 0.5, band = innerHeight * 0.2;
   glowables().forEach((el) => {
     const r = el.getBoundingClientRect();
     const on = r.top < mid + band && r.bottom > mid - band;
