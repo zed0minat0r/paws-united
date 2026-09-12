@@ -86,7 +86,7 @@ a{color:inherit}
 .stats strong.mint{color:var(--mint)}
 
 /* live visit console */
-.console{padding:1.1rem;width:100%;max-width:440px;font-size:.92rem;overflow:hidden}
+.console{padding:1.1rem;width:100%;max-width:440px;font-size:.92rem;overflow:hidden;background:rgba(26,19,17,.78)}
 .console header{display:flex;justify-content:space-between;align-items:center;padding-bottom:.8rem;border-bottom:1px solid var(--line);font-weight:700;font-size:.82rem;color:var(--muted)}
 .console header b{color:var(--mint);font-weight:600}
 .console .clock{font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -229,10 +229,35 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 
 .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(26,19,17,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 
+/* photos */
+img{max-width:100%;display:block}
+.hero-visual{position:relative;display:grid;gap:1rem}
+.hero-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:28px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.console .photo img{width:64px;height:64px;object-fit:cover;border-radius:12px;flex:none}
+.console .photo{justify-content:flex-start;padding:0 .9rem 0 .5rem;gap:.8rem;height:auto;min-height:72px;text-align:left}
+.svc-img{grid-column:1/-1;width:calc(100% + 2.4rem);margin:-1.2rem -1.2rem .6rem;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r) var(--r) 0 0;max-width:none}
+.band-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;max-height:340px}
+.strip-wrap{padding-top:0}
+.strip{display:grid;gap:.8rem}
+.strip figure{margin:0;position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.strip figure:hover img{transform:scale(1.04)}
+.strip figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.2rem 1rem .9rem;font-weight:700;font-size:.92rem;color:#fff;background:linear-gradient(transparent,rgba(20,12,10,.85))}
+
+/* animated headings: words rise in one after another, gradient text shimmers */
+.motion h1 .w,.motion h2 .w{display:inline-block;padding-bottom:.08em;margin-bottom:-.08em;transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.motion .pre h2 .w,.motion h1.pre .w{opacity:0;transform:translateY(.6em) rotate(2deg)}
+.motion .grad{background-size:200% 100%;animation:shimmer 6s ease-in-out infinite}
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.motion .eyebrow{position:relative;padding-left:1.6rem}
+.motion .eyebrow::before{content:"";position:absolute;left:0;top:50%;height:2px;width:1.1rem;background:var(--mint);transform-origin:left;transform:scaleX(0);transition:transform .7s ease .2s}
+.motion .eyebrow.on::before,.motion .section-head:not(.pre) .eyebrow::before{transform:scaleX(1)}
+
 @media (min-width:560px){
   .services,.needs,.rates,.team{grid-template-columns:1fr 1fr}
   .row{grid-template-columns:1fr 1fr}
   .hero .actions{display:flex;flex-wrap:wrap}
+  .strip{grid-template-columns:repeat(3,1fr)}
   .person{grid-template-columns:130px 1fr;align-items:start}
   footer{grid-auto-flow:column;justify-content:space-between}
 }
@@ -247,7 +272,9 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   .section-head{margin-bottom:2.6rem}
   .hero{grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding:4.5rem 0 5rem}
   .hero .lede{font-size:1.2rem}
-  .console{justify-self:end;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);padding:1.4rem;box-shadow:0 40px 80px -40px rgba(255,154,108,.4),0 30px 60px -30px rgba(0,0,0,.7)}
+  .hero-visual{display:block;padding:0 0 2.5rem 1.5rem}
+  .hero-photo{width:100%;aspect-ratio:5/6;object-position:50% 25%}
+  .console{position:absolute;left:0;bottom:0;max-width:320px;font-size:.84rem;transform-origin:bottom left;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg) scale(.96);padding:1.2rem;box-shadow:0 40px 80px -40px rgba(255,154,108,.4),0 30px 60px -30px rgba(0,0,0,.7)}
   .stats{display:flex;gap:2rem;font-size:.9rem}
   .stats strong{font-size:1.7rem}
   .needs{grid-template-columns:repeat(4,1fr)}
@@ -258,7 +285,8 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   .svc .price small{display:inline}
   .rates{grid-template-columns:repeat(3,1fr);gap:1.1rem}
   .steps{grid-template-columns:repeat(3,1fr);gap:1.2rem}
-  .band{grid-template-columns:1fr 1fr;gap:3rem;padding:3.5rem}
+  .band{grid-template-columns:260px 1fr 1fr;gap:2.5rem;padding:2.5rem;align-items:center}
+  .band-img{max-height:none}
   .band ul{margin-top:1.2rem}
   .team{gap:1.4rem}
   .person{grid-template-columns:160px 1fr;padding:1.6rem}
@@ -310,7 +338,9 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
       </div>
     </div>
 
-    <article class="glass console" aria-label="Example live visit report">
+    <div class="hero-visual">
+      <img class="hero-photo" src="img/hero.jpg" width="1400" height="934" alt="A woman laughing as a small terrier licks her cheek" fetchpriority="high">
+      <article class="glass console" aria-label="Example live visit report">
       <header><span><b>●</b> Mochi's morning visit</span><span class="clock" id="clock">7:41 am</span></header>
       <div class="pet">
         <div class="avatar">M</div>
@@ -331,8 +361,9 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
         <li><span class="t">7:52</span><span class="ok">✓</span><span>Litter scooped, everything looks normal</span></li>
         <li><span class="t">8:06</span><span class="ok">✓</span><span>Ten minutes of lap time, doors locked, photo on its way</span></li>
       </ul>
-      <div class="photo">Your photo of Mochi lands here, every visit</div>
-    </article>
+      <div class="photo"><img src="img/tabby-lap.jpg" alt="A tabby cat being petted at home" loading="lazy"><span>Your photo of Mochi, sent 8:06 am</span></div>
+      </article>
+    </div>
   </section>
 </div>
 
@@ -358,10 +389,10 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
       <p>Pets stay where they're comfortable. Every visit ends with a photo and a written report.</p>
     </div>
     <div class="services">
-      <div class="glass svc reveal"><span class="dur">15 to 60 min</span><h3>Drop-in visits</h3><p>Feeding, potty, litter, play, a walk if they want one. Dogs, cats, small animals.</p><span class="price" data-rate="dropin-from"></span></div>
-      <div class="glass svc medical reveal"><span class="dur">Vet tech only</span><h3>Medical visits</h3><p>Injections, insulin, oral and topical meds, sub-Q fluids, post-op care. Added to any visit.</p><span class="price" data-rate="med"></span></div>
-      <div class="glass svc reveal"><span class="dur">8 pm to 7 am</span><h3>Overnight stays</h3><p>We sleep at your place. Includes a midday and a dinner visit, and any medication during the stay.</p><span class="price" data-rate="overnight"></span></div>
-      <div class="glass svc reveal"><span class="dur">Recurring</span><h3>Weekly care</h3><p>Standing midday or evening visits while you're at work. Prepaid, cheaper, and your slot is held.</p><span class="price" data-rate="weekly"></span></div>
+      <div class="glass svc reveal"><img class="svc-img" src="img/cat-highfive.jpg" alt="A tabby cat touching a person's palm" loading="lazy"><span class="dur">15 to 60 min</span><h3>Drop-in visits</h3><p>Feeding, potty, litter, play, a walk if they want one. Dogs, cats, small animals.</p><span class="price" data-rate="dropin-from"></span></div>
+      <div class="glass svc medical reveal"><img class="svc-img" src="img/injection.jpg" alt="A veterinary professional giving a small dog an injection" loading="lazy"><span class="dur">Vet tech only</span><h3>Medical visits</h3><p>Injections, insulin, oral and topical meds, sub-Q fluids, post-op care. Added to any visit.</p><span class="price" data-rate="med"></span></div>
+      <div class="glass svc reveal"><img class="svc-img" src="img/sleeping.jpg" alt="A golden retriever asleep on a blanket" loading="lazy"><span class="dur">8 pm to 7 am</span><h3>Overnight stays</h3><p>We sleep at your place. Includes a midday and a dinner visit, and any medication during the stay.</p><span class="price" data-rate="overnight"></span></div>
+      <div class="glass svc reveal"><img class="svc-img" src="img/couch.jpg" alt="A golden retriever on the couch looking out the window" loading="lazy"><span class="dur">Recurring</span><h3>Weekly care</h3><p>Standing midday or evening visits while you're at work. Prepaid, cheaper, and your slot is held.</p><span class="price" data-rate="weekly"></span></div>
     </div>
   </section>
 
@@ -388,6 +419,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 
   <section>
     <div class="band reveal">
+      <img class="band-img" src="img/scrubs-cat.jpg" alt="A vet tech in scrubs holding a white cat" loading="lazy">
       <div>
         <p class="eyebrow">Why Paws United</p>
         <h2 style="margin-top:.6rem">Clinic-level care, living-room comfort.</h2>
@@ -427,6 +459,14 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
           <ul class="creds"><li>Standard visits</li><li>Overnights</li><li>Pet first aid &amp; CPR <span class="ph">?</span></li><li>Background checked <span class="ph">?</span></li></ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="strip-wrap" aria-label="Pets we look after">
+    <div class="strip">
+      <figure class="reveal"><img src="img/hug.jpg" alt="A man hugging a happy tan dog" loading="lazy"><figcaption>Every visit ends with a photo like this one</figcaption></figure>
+      <figure class="reveal"><img src="img/dogcat-bed.jpg" alt="A dog and a cat cuddled together on a bed" loading="lazy"><figcaption>Multi-pet homes welcome</figcaption></figure>
+      <figure class="reveal"><img src="img/couch.jpg" alt="A golden retriever waiting by the window" loading="lazy"><figcaption>Home is where they're calmest</figcaption></figure>
     </div>
   </section>
 
@@ -531,7 +571,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 <div class="wrap">
   <footer>
     <div>© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
-    <div class="legal"><a href="tel:+10000000000">(000) 000-0000</a><a href="mailto:hello@pawsunited.com">hello@pawsunited.com</a><a href="#">Service agreement</a><a href="#">Vet release form</a><a href="#faq">Cancellation policy</a></div>
+    <div class="legal"><a href="tel:+10000000000">(000) 000-0000</a><a href="mailto:hello@pawsunited.com">hello@pawsunited.com</a><a href="#">Service agreement</a><a href="#">Vet release form</a><a href="#faq">Cancellation policy</a><span>Photos via Unsplash</span></div>
   </footer>
 </div>
 
@@ -594,6 +634,28 @@ $("#faq-cancel").textContent = RATES.cancellation.map(([w, r]) => `${w}: ${r.toL
 // live clock in the console card
 const clock = $("#clock");
 if (clock) setInterval(() => { clock.textContent = new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}).toLowerCase(); }, 1000);
+
+// split headings into words so they can rise in one at a time
+document.querySelectorAll("h1, h2").forEach((hd) => {
+  let i = 0;
+  const walk = (node) => {
+    [...node.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const sp = document.createElement("span"); sp.className = "w"; sp.textContent = part; sp.style.transitionDelay = (i++ * 55) + "ms"; frag.appendChild(sp);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && n.classList.contains("grad")) { n.classList.add("w"); n.style.transitionDelay = (i++ * 55) + "ms"; }
+      else if (n.nodeType === 1 && !n.classList.contains("ph")) walk(n);
+    });
+  };
+  walk(hd);
+});
+const h1 = document.querySelector("h1");
+if (h1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) { h1.classList.add("pre"); requestAnimationFrame(() => requestAnimationFrame(() => h1.classList.remove("pre"))); }
 
 // count-up stats and scroll reveal. Everything is visible at rest; motion only adds.
 const motionOK = !matchMedia("(prefers-reduced-motion: reduce)").matches;
