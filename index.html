@@ -5,68 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paws United Pet Sitting · In-home pet care by a licensed vet tech, Phoenixville PA</title>
 <meta name="description" content="In-home pet sitting and overnight care in Phoenixville, PA by a licensed veterinary technician. Insulin, injections, post-surgical and senior pet care. Serving Royersford, Limerick, Collegeville, Spring City, Pottstown, Schwenksville and Kimberton.">
-<meta name="theme-color" content="#070B12">
+<meta name="theme-color" content="#1A1311">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Paws United Pet Sitting","description":"In-home pet sitting and overnight pet care by a licensed veterinary technician.","telephone":"+1-000-000-0000","email":"hello@pawsunited.com","url":"https://pawsunited.com","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Phoenixville","addressRegion":"PA","postalCode":"19460","addressCountry":"US"},"areaServed":["Phoenixville","Royersford","Limerick","Collegeville","Spring City","Pottstown","Schwenksville","Kimberton"],"openingHours":"Mo-Su 07:00-21:00"}
 </script>
 <style>
 /* Single deliberate dark world: a monitoring console for pets. Every color painted explicitly. */
 :root{
-  --bg:#070B12; --bg2:#0B1220; --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.06);
-  --ink:#EAF1F6; --muted:#8EA0B2; --dim:#5C6B7A; --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
-  --mint:#4FF2C4; --mint-dim:rgba(79,242,196,.14); --mint-ink:#0A3B2E;
-  --amber:#FFB454; --amber-ink:#2A1600;
+  --bg:#1A1311; --bg2:#231A17; --surface:rgba(255,236,224,.05); --surface-2:rgba(255,236,224,.09);
+  --ink:#FBF4EE; --muted:#C2AFA3; --dim:#8C7A70; --line:rgba(255,236,224,.1); --line-2:rgba(255,236,224,.18);
+  --mint:#FF9A6C; --mint-dim:rgba(255,154,108,.16); --mint-ink:#3A1A0C;
+  --amber:#FFC46B; --amber-ink:#2A1600;
   --ph-bg:#3A2A0A; --ph-ink:#FFD28A;
-  --display:"Sora",ui-sans-serif,system-ui,sans-serif;
-  --body:"Manrope",ui-sans-serif,system-ui,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --r:18px; --tap:50px;
+  --display:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  --body:"Nunito",ui-sans-serif,system-ui,sans-serif;
+  --mono:"Nunito",ui-sans-serif,system-ui,sans-serif;
+  --r:22px; --tap:50px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:dark}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(var(--tap) + 1.6rem + env(safe-area-inset-bottom));overflow-x:hidden}
 /* ambient: two drifting light fields and a faint grid, fixed behind everything */
 .ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
-  radial-gradient(60% 45% at 15% 5%,rgba(79,242,196,.16),transparent 60%),
-  radial-gradient(45% 40% at 90% 20%,rgba(96,140,255,.14),transparent 60%),
-  radial-gradient(50% 50% at 60% 100%,rgba(255,180,84,.08),transparent 60%),var(--bg)}
-.ambient::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(70% 60% at 50% 0%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(70% 60% at 50% 0%,#000 20%,transparent 100%);opacity:.5}
+  radial-gradient(60% 45% at 15% 5%,rgba(255,154,108,.22),transparent 60%),
+  radial-gradient(45% 40% at 90% 20%,rgba(255,111,145,.16),transparent 60%),
+  radial-gradient(50% 50% at 60% 100%,rgba(167,139,250,.12),transparent 60%),var(--bg)}
+.ambient::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(70% 60% at 50% 0%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(70% 60% at 50% 0%,#000 20%,transparent 100%);opacity:.35}
 .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
-.orb.a{width:46vw;height:46vw;left:-12vw;top:-8vw;background:#1ED9A6}
-.orb.b{width:38vw;height:38vw;right:-10vw;top:12vw;background:#4C7DFF;animation-duration:28s}
+.orb.a{width:46vw;height:46vw;left:-12vw;top:-8vw;background:#FF8A5B}
+.orb.b{width:38vw;height:38vw;right:-10vw;top:12vw;background:#B48CFF;animation-duration:28s}
 @keyframes drift{to{transform:translate3d(6vw,8vw,0) scale(1.12)}}
 
-h1,h2,h3{font-family:var(--display);line-height:1.04;text-wrap:balance;margin:0;letter-spacing:-.025em}
-h1{font-size:clamp(2.3rem,10vw,5.2rem);font-weight:800}
+h1,h2,h3{font-family:var(--display);line-height:1.06;text-wrap:balance;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,10vw,4.8rem);font-weight:800}
 h2{font-size:clamp(1.8rem,6.8vw,3rem);font-weight:700}
 h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
 p{margin:0}
 a{color:inherit}
 .wrap{width:min(1160px,calc(100% - 2rem));margin-inline:auto}
-.eyebrow{font-family:var(--mono);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
-.eyebrow::before{content:"// "}
+.eyebrow{font-family:var(--body);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
 .ph{background:var(--ph-bg);color:var(--ph-ink);padding:0 .3em;border-radius:4px;font-weight:600;font-size:.92em}
-.grad{background:linear-gradient(92deg,#FFFFFF 0%,var(--mint) 55%,#9AD0FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad{background:linear-gradient(92deg,#FFE3D1 0%,#FF9A6C 50%,#FF7DA0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:var(--tap);padding:.8rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--body);font-size:1rem;position:relative;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
 .btn:active{transform:scale(.98)}
 .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
-.btn-primary{background:var(--amber);color:var(--amber-ink);box-shadow:0 0 0 0 rgba(255,180,84,.0),0 10px 30px -12px rgba(255,180,84,.7)}
-.btn-primary:hover{box-shadow:0 0 0 6px rgba(255,180,84,.12),0 14px 34px -12px rgba(255,180,84,.8);transform:translateY(-1px)}
+.btn-primary{background:var(--amber);color:var(--amber-ink);box-shadow:0 10px 30px -12px rgba(255,196,107,.7)}
+.btn-primary:hover{box-shadow:0 0 0 6px rgba(255,196,107,.14),0 14px 34px -12px rgba(255,196,107,.8);transform:translateY(-1px)}
 .btn-ghost{border-color:var(--line-2);color:var(--ink);background:var(--surface);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .btn-ghost:hover{background:var(--surface-2)}
 
 /* glass */
 .glass{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);position:relative}
-.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(255,255,255,0) 40%,rgba(79,242,196,.25));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(255,236,224,.28),rgba(255,236,224,0) 40%,rgba(255,154,108,.28));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 
 /* nav */
-.navwrap{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(7,11,18,.6);border-bottom:1px solid var(--line)}
+.navwrap{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(26,19,17,.6);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 0}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
-.brand .mark{width:34px;height:34px;flex:none;border-radius:10px;background:linear-gradient(135deg,var(--mint),#4C7DFF);display:grid;place-items:center;box-shadow:0 0 24px -4px rgba(79,242,196,.6)}
+.brand .mark{width:34px;height:34px;flex:none;border-radius:10px;background:linear-gradient(135deg,#FF9A6C,#FF7DA0);display:grid;place-items:center;box-shadow:0 0 24px -4px rgba(255,154,108,.6)}
 .brand .mark svg{width:20px;height:20px}
 .nav ul{display:none;gap:1.5rem;list-style:none;margin:0;padding:0;font-weight:600;font-size:.95rem}
 .nav ul a{text-decoration:none;color:var(--muted);transition:color .15s}
@@ -79,40 +78,40 @@ a{color:inherit}
 .hero{display:grid;gap:2rem;padding:2.2rem 0 2.6rem}
 .hero .lede{font-size:1.1rem;color:var(--muted);max-width:38ch;margin-top:1.2rem}
 .hero .actions{display:grid;gap:.7rem;margin-top:1.6rem}
-.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .8rem .4rem .5rem;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.pill i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(79,242,196,.6);animation:ping 2s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(79,242,196,.6)}100%{box-shadow:0 0 0 10px rgba(79,242,196,0)}}
+.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem .4rem .6rem;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);font-weight:700;font-size:.82rem;color:var(--muted)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(255,154,108,.6);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,154,108,.6)}100%{box-shadow:0 0 0 10px rgba(255,154,108,0)}}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.78rem;line-height:1.3;color:var(--muted)}
 .stats strong{display:block;color:var(--ink);font-family:var(--display);font-size:1.35rem;margin-bottom:.15rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .stats strong.mint{color:var(--mint)}
 
 /* live visit console */
 .console{padding:1.1rem;width:100%;max-width:440px;font-size:.92rem;overflow:hidden}
-.console header{display:flex;justify-content:space-between;align-items:center;padding-bottom:.8rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.console header{display:flex;justify-content:space-between;align-items:center;padding-bottom:.8rem;border-bottom:1px solid var(--line);font-weight:700;font-size:.82rem;color:var(--muted)}
 .console header b{color:var(--mint);font-weight:600}
 .console .clock{font-variant-numeric:tabular-nums;color:var(--ink)}
 .console .pet{display:flex;gap:.9rem;align-items:center;margin:.9rem 0}
-.console .avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#FFB454,#FF7A59);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#2A1600;flex:none}
+.console .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FFC46B,#FF7A59);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#2A1600;flex:none}
 .console .pet h3{font-size:1.05rem}
 .console .pet p{color:var(--muted);font-size:.82rem}
-.route{display:grid;grid-template-columns:96px 1fr;gap:.9rem;align-items:center;padding:.8rem;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid var(--line)}
+.route{display:grid;grid-template-columns:96px 1fr;gap:.9rem;align-items:center;padding:.8rem;border-radius:16px;background:rgba(0,0,0,.18);border:1px solid var(--line)}
 .route svg{width:96px;height:72px;display:block}
 .route .path{fill:none;stroke:var(--mint);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:260;stroke-dashoffset:260;animation:draw 3.2s ease-out .4s forwards}
 .route .pin{fill:var(--amber)}
 .route .home{fill:none;stroke:var(--muted);stroke-width:1.5}
 @keyframes draw{to{stroke-dashoffset:0}}
-.route dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .7rem;margin:0;font-family:var(--mono);font-size:.74rem}
+.route dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .7rem;margin:0;font-size:.82rem}
 .route dt{color:var(--dim)}
 .route dd{margin:0;color:var(--ink)}
-.log{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.45rem;font-family:var(--mono);font-size:.76rem}
+.log{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.5rem;font-size:.86rem}
 .log li{display:flex;gap:.6rem;align-items:flex-start}
 .motion .log li{opacity:0;transform:translateY(4px);animation:rise .5s ease forwards}
 .motion .log li:nth-child(1){animation-delay:.3s}.motion .log li:nth-child(2){animation-delay:.7s}.motion .log li:nth-child(3){animation-delay:1.1s}.motion .log li:nth-child(4){animation-delay:1.5s}.motion .log li:nth-child(5){animation-delay:1.9s}
 @keyframes rise{to{opacity:1;transform:none}}
-.log .t{color:var(--dim);flex:none;width:3.4rem}
+.log .t{color:var(--dim);flex:none;width:3.6rem;font-variant-numeric:tabular-nums}
 .log .ok{color:var(--mint)}
 .log .med{color:var(--amber)}
-.console .photo{margin-top:.9rem;height:64px;border-radius:12px;background:linear-gradient(135deg,rgba(79,242,196,.15),rgba(76,125,255,.15));border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--muted);font-size:.8rem;font-family:var(--mono)}
+.console .photo{margin-top:.9rem;height:72px;border-radius:16px;background:linear-gradient(135deg,rgba(255,154,108,.22),rgba(255,125,160,.18));border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--ink);font-size:.86rem;font-weight:600}
 @media (prefers-reduced-motion:reduce){.log li{opacity:1;transform:none;animation:none}.route .path{stroke-dashoffset:0;animation:none}.orb,.pill i,.sweep{animation:none!important}}
 
 section{padding:3rem 0}
@@ -124,7 +123,7 @@ section{padding:3rem 0}
 /* who this is for */
 .needs{display:grid;gap:.8rem}
 .need{padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:transform .2s ease,border-color .2s ease}
-.need:hover{transform:translateY(-3px);border-color:rgba(79,242,196,.4)}
+.need:hover{transform:translateY(-3px);border-color:rgba(255,154,108,.45)}
 .need .ico{flex:none;width:42px;height:42px;border-radius:12px;background:var(--mint-dim);display:grid;place-items:center;color:var(--mint)}
 .need .ico svg{width:22px;height:22px}
 .need p{color:var(--muted);font-size:.95rem;margin-top:.25rem}
@@ -132,13 +131,13 @@ section{padding:3rem 0}
 /* services */
 .services{display:grid;gap:.9rem}
 .svc{padding:1.3rem;display:grid;grid-template-columns:1fr auto;gap:.3rem .9rem;align-items:start;transition:transform .2s ease,border-color .2s ease}
-.svc:hover{transform:translateY(-3px);border-color:rgba(79,242,196,.4)}
-.svc .dur{grid-column:1/-1;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.svc:hover{transform:translateY(-3px);border-color:rgba(255,154,108,.45)}
+.svc .dur{grid-column:1/-1;font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
 .svc h3{grid-column:1}
 .svc p{grid-column:1;color:var(--muted);font-size:.95rem}
 .svc .price{grid-column:2;grid-row:2/4;font-family:var(--display);font-size:1.35rem;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;letter-spacing:-.02em}
 .svc .price small{display:block;font-family:var(--body);font-size:.76rem;font-weight:500;color:var(--muted)}
-.svc.medical{background:linear-gradient(160deg,rgba(79,242,196,.14),rgba(255,255,255,.03) 60%);border-color:rgba(79,242,196,.35)}
+.svc.medical{background:linear-gradient(160deg,rgba(255,154,108,.18),rgba(255,236,224,.04) 60%);border-color:rgba(255,154,108,.4)}
 .svc.medical .dur{color:var(--mint)}
 
 /* rate card - rendered from RATES */
@@ -149,19 +148,19 @@ section{padding:3rem 0}
 .rate-block table{width:100%;border-collapse:collapse;font-size:.95rem}
 .rate-block td{padding:.5rem 0;border-top:1px solid var(--line);vertical-align:top}
 .rate-block tr:first-child td{border-top:0}
-.rate-block td:last-child{text-align:right;padding-left:1rem;font-weight:700;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:.9rem;color:var(--mint);max-width:55%}
+.rate-block td:last-child{text-align:right;padding-left:1rem;font-weight:800;font-variant-numeric:tabular-nums;font-family:var(--display);font-size:1rem;color:var(--mint);max-width:55%}
 .rate-block td small{display:block;color:var(--muted);font-weight:400;font-family:var(--body);font-size:.82rem}
 .rate-block .foot{color:var(--muted);font-size:.85rem;margin-top:.7rem}
 
 /* how it works */
 .steps{display:grid;gap:1.2rem;counter-reset:step}
 .step{position:relative;padding:1.2rem 1.2rem 1.2rem 4rem}
-.step::before{counter-increment:step;content:"0" counter(step);position:absolute;top:1.2rem;left:1.2rem;font-family:var(--mono);font-size:.8rem;color:var(--mint);letter-spacing:.06em}
+.step::before{counter-increment:step;content:counter(step);position:absolute;top:1.1rem;left:1.1rem;width:2rem;height:2rem;border-radius:50%;background:var(--mint-dim);color:var(--mint);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.9rem}
 .step p{color:var(--muted);margin-top:.4rem;font-size:.95rem}
 
 /* band */
-.band{border-radius:24px;padding:1.9rem 1.4rem;display:grid;gap:1.4rem;background:linear-gradient(135deg,rgba(79,242,196,.16),rgba(76,125,255,.12) 60%,rgba(255,180,84,.1));border:1px solid var(--line-2);position:relative;overflow:hidden}
-.band::after{content:"";position:absolute;inset:auto -20% -60% auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(79,242,196,.25),transparent 65%);pointer-events:none}
+.band{border-radius:24px;padding:1.9rem 1.4rem;display:grid;gap:1.4rem;background:linear-gradient(135deg,rgba(255,154,108,.2),rgba(255,125,160,.14) 60%,rgba(167,139,250,.12));border:1px solid var(--line-2);position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;inset:auto -20% -60% auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,154,108,.28),transparent 65%);pointer-events:none}
 .band p{color:var(--muted)}
 .band ul{list-style:none;margin:0;padding:0;display:grid;gap:.7rem;position:relative}
 .band li{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;font-weight:500}
@@ -170,18 +169,18 @@ section{padding:3rem 0}
 /* team */
 .team{display:grid;gap:1.2rem}
 .person{padding:1.3rem;display:grid;gap:1rem}
-.portrait{aspect-ratio:4/5;max-width:150px;border-radius:14px;background:linear-gradient(160deg,rgba(79,242,196,.18),rgba(76,125,255,.12));border:1px dashed var(--line-2);display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;font-size:.85rem;padding:.6rem}
-.person .role{font-family:var(--mono);color:var(--amber);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
+.portrait{aspect-ratio:4/5;max-width:150px;border-radius:18px;background:linear-gradient(160deg,rgba(255,154,108,.22),rgba(255,125,160,.14));border:1px dashed var(--line-2);display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;font-size:.85rem;padding:.6rem}
+.person .role{font-weight:700;color:var(--amber);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
 .person p.bio{color:var(--muted);margin-top:.6rem;font-size:.95rem}
 .creds{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
-.creds li{font-size:.78rem;font-weight:600;padding:.3rem .6rem;border-radius:999px;background:var(--mint-dim);color:var(--mint);border:1px solid rgba(79,242,196,.25)}
+.creds li{font-size:.8rem;font-weight:700;padding:.3rem .7rem;border-radius:999px;background:var(--mint-dim);color:var(--mint);border:1px solid rgba(255,154,108,.28)}
 
 /* reviews */
 .reviews{display:grid;gap:.9rem}
 .review{margin:0;padding:1.3rem;display:grid;gap:.6rem}
 .stars{color:var(--amber);letter-spacing:.12em;font-size:.95rem}
 .review blockquote{margin:0;font-size:1.02rem;line-height:1.45}
-.review figcaption{font-size:.82rem;color:var(--muted);font-family:var(--mono)}
+.review figcaption{font-size:.85rem;color:var(--muted);font-weight:600}
 
 /* service area radar */
 .area{display:grid;gap:1.4rem}
@@ -191,10 +190,11 @@ section{padding:3rem 0}
 .radar .axis{stroke:var(--line);stroke-width:1}
 .radar .town{fill:var(--ink)}
 .radar .town.core{fill:var(--amber)}
-.radar .lbl{font-family:var(--mono);font-size:8.5px;fill:var(--muted);letter-spacing:.02em}
+.radar .lbl{font-family:var(--body);font-weight:600;font-size:9px;fill:var(--muted)}
 .radar .lbl.core{fill:var(--amber);font-weight:600}
-.sweep{transform-origin:150px 150px;animation:spin 7s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+.radar .town{filter:drop-shadow(0 0 6px rgba(255,154,108,.9))}
+.radar .home{transform-origin:150px 150px;animation:pulse 2.6s ease-out infinite;fill:var(--amber);opacity:.5}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(3.2);opacity:0}}
 .areas{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
 .areas span{padding:.5rem .85rem;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);font-weight:600;font-size:.9rem}
 .areas span.core{border-color:var(--amber);color:var(--amber)}
@@ -204,7 +204,7 @@ section{padding:3rem 0}
 .faq details{padding:0 1.1rem}
 .faq summary{cursor:pointer;min-height:var(--tap);display:flex;align-items:center;justify-content:space-between;gap:1rem;font-weight:700;padding:.85rem 0;list-style:none}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--mono);font-size:1.3rem;color:var(--mint);flex:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:1.4rem;color:var(--mint);flex:none}
 .faq details[open] summary::after{content:"–"}
 .faq details p{color:var(--muted);padding:0 0 1rem;font-size:.97rem}
 
@@ -213,21 +213,21 @@ section{padding:3rem 0}
 form{padding:1.3rem;display:grid;gap:.9rem}
 .row{display:grid;gap:.9rem}
 label{display:grid;gap:.35rem;font-weight:600;font-size:.88rem;color:var(--muted)}
-input,select,textarea{font:inherit;font-size:16px;min-height:var(--tap);padding:.7rem .95rem;border:1px solid var(--line-2);border-radius:12px;background:rgba(0,0,0,.3);color:var(--ink);width:100%;transition:border-color .15s,box-shadow .15s}
-input:focus,textarea:focus{border-color:var(--mint);box-shadow:0 0 0 4px rgba(79,242,196,.12);outline:none}
+input,select,textarea{font:inherit;font-size:16px;min-height:var(--tap);padding:.7rem .95rem;border:1px solid var(--line-2);border-radius:14px;background:rgba(0,0,0,.22);color:var(--ink);width:100%;transition:border-color .15s,box-shadow .15s}
+input:focus,textarea:focus{border-color:var(--mint);box-shadow:0 0 0 4px rgba(255,154,108,.14);outline:none}
 input::placeholder,textarea::placeholder{color:var(--dim)}
 textarea{min-height:110px;resize:vertical}
 .fine{font-size:.85rem;color:var(--muted)}
 .checks-inline{display:flex;flex-wrap:wrap;gap:.5rem}
 .checks-inline label{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;color:var(--ink);padding:.5rem .8rem;border:1px solid var(--line-2);border-radius:999px;cursor:pointer;font-size:.9rem;min-height:40px}
 .checks-inline label:has(input:checked){border-color:var(--mint);background:var(--mint-dim);color:var(--mint)}
-.checks-inline input{width:auto;min-height:0;accent-color:#4FF2C4;margin:0}
+.checks-inline input{width:auto;min-height:0;accent-color:#FF9A6C;margin:0}
 
 footer{border-top:1px solid var(--line);padding:2rem 0;display:grid;gap:.6rem;color:var(--muted);font-size:.88rem}
 footer a{text-decoration:none}
 footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 
-.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(7,11,18,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(26,19,17,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 
 @media (min-width:560px){
   .services,.needs,.rates,.team{grid-template-columns:1fr 1fr}
@@ -247,7 +247,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   .section-head{margin-bottom:2.6rem}
   .hero{grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding:4.5rem 0 5rem}
   .hero .lede{font-size:1.2rem}
-  .console{justify-self:end;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);padding:1.4rem;box-shadow:0 40px 80px -40px rgba(79,242,196,.35),0 30px 60px -30px rgba(0,0,0,.8)}
+  .console{justify-self:end;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);padding:1.4rem;box-shadow:0 40px 80px -40px rgba(255,154,108,.4),0 30px 60px -30px rgba(0,0,0,.7)}
   .stats{display:flex;gap:2rem;font-size:.9rem}
   .stats strong{font-size:1.7rem}
   .needs{grid-template-columns:repeat(4,1fr)}
@@ -276,7 +276,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 <div class="navwrap"><div class="wrap">
   <nav class="nav">
     <a class="brand" href="#top" aria-label="Paws United Pet Sitting">
-      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8" fill="#070B12"/><circle cx="6.2" cy="10" r="2" fill="#070B12"/><circle cx="10" cy="6.8" r="2" fill="#070B12"/><circle cx="14" cy="6.8" r="2" fill="#070B12"/><circle cx="17.8" cy="10" r="2" fill="#070B12"/></svg></span>
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8" fill="#2A1208"/><circle cx="6.2" cy="10" r="2" fill="#2A1208"/><circle cx="10" cy="6.8" r="2" fill="#2A1208"/><circle cx="14" cy="6.8" r="2" fill="#2A1208"/><circle cx="17.8" cy="10" r="2" fill="#2A1208"/></svg></span>
       Paws United
     </a>
     <ul>
@@ -296,25 +296,25 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 <div class="wrap">
   <section class="hero">
     <div>
-      <span class="pill"><i></i>Phoenixville, PA · now booking</span>
-      <h1 style="margin-top:1.1rem">In-home pet care by a <span class="grad">licensed veterinary technician.</span></h1>
-      <p class="lede">Drop-in visits and overnight stays for pets who need more than a walk: insulin, injections, post-surgery recovery, seniors on a handful of meds. And for the ones who just need dinner and a belly rub.</p>
+      <span class="pill"><i></i>Now booking in Phoenixville, PA</span>
+      <h1 style="margin-top:1.1rem">Pet care at home, by a <span class="grad">licensed vet tech.</span></h1>
+      <p class="lede">Someone who'll love them like you do, and can handle the insulin. Drop-in visits and overnight stays in Phoenixville and nearby, with a photo after every one.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#book">Schedule a free meet &amp; greet</a>
         <a class="btn btn-ghost" href="#pricing">See pricing</a>
       </div>
       <div class="stats">
-        <div><strong class="mint">LVT</strong>licensed vet tech on every medical visit</div>
+        <div><strong class="mint">LVT</strong>a licensed vet tech on every medical visit</div>
         <div><strong data-count="5.0" data-dec="1">0.0</strong>★ on Google <span class="ph">(count)</span></div>
-        <div><strong data-count="100" data-suffix="%">0%</strong>of visits end with a photo report</div>
+        <div><strong data-count="100" data-suffix="%">0%</strong>of visits end with a photo of your pet</div>
       </div>
     </div>
 
     <article class="glass console" aria-label="Example live visit report">
-      <header><span><b>●</b> Visit in progress</span><span class="clock" id="clock">07:41:12</span></header>
+      <header><span><b>●</b> Mochi's morning visit</span><span class="clock" id="clock">7:41 am</span></header>
       <div class="pet">
         <div class="avatar">M</div>
-        <div><h3>Mochi · 30-min visit + insulin</h3><p>11 yr DSH · diabetic · Phoenixville</p></div>
+        <div><h3>Mochi, 11</h3><p>Diabetic tabby · 30-min visit with insulin</p></div>
       </div>
       <div class="route">
         <svg viewBox="0 0 96 72" aria-hidden="true">
@@ -322,16 +322,16 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
           <rect class="home" x="5" y="55" width="10" height="10" rx="2"/>
           <circle class="pin" cx="86" cy="14" r="4"/>
         </svg>
-        <dl><dt>GPS in</dt><dd>07:38:05</dd><dt>Route</dt><dd>0.4 mi · 3 min</dd><dt>Sitter</dt><dd>LVT on site</dd></dl>
+        <dl><dt>Arrived</dt><dd>7:38 am</dd><dt>Sitter</dt><dd><span class="ph">[Her name]</span>, LVT</dd><dt>Trip</dt><dd>0.4 mi from the last stop</dd></dl>
       </div>
       <ul class="log">
-        <li><span class="t">07:39</span><span class="ok">✓</span><span>Ate full breakfast, ½ can DM</span></li>
-        <li><span class="t">07:44</span><span class="med">✚</span><span>Vetsulin 3u SC, left flank · logged</span></li>
-        <li><span class="t">07:47</span><span class="ok">✓</span><span>Water refilled · drinking normally</span></li>
-        <li><span class="t">07:52</span><span class="ok">✓</span><span>Litter scooped · output normal</span></li>
-        <li><span class="t">08:06</span><span class="ok">✓</span><span>Doors locked · photo sent to owner</span></li>
+        <li><span class="t">7:39</span><span class="ok">✓</span><span>Breakfast first, and she finished it</span></li>
+        <li><span class="t">7:44</span><span class="med">✚</span><span>3 units of insulin, no fuss, dose logged for your vet</span></li>
+        <li><span class="t">7:47</span><span class="ok">✓</span><span>Fresh water, drinking normally</span></li>
+        <li><span class="t">7:52</span><span class="ok">✓</span><span>Litter scooped, everything looks normal</span></li>
+        <li><span class="t">8:06</span><span class="ok">✓</span><span>Ten minutes of lap time, doors locked, photo on its way</span></li>
       </ul>
-      <div class="photo">📷 mochi_0806.jpg · delivered</div>
+      <div class="photo">Your photo of Mochi lands here, every visit</div>
     </article>
   </section>
 </div>
@@ -340,8 +340,8 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   <section id="who">
     <div class="section-head reveal">
       <p class="eyebrow">Who this is for</p>
-      <h2 style="margin-top:.6rem">The pets other sitters can't take.</h2>
-      <p>Most sitters will "try" to give a pill. We administer prescription medication and injections as a matter of course, the same way we do at the clinic.</p>
+      <h2 style="margin-top:.6rem">The pets other sitters can't take. We'd love to.</h2>
+      <p>Most sitters will "try" to give a pill. We give injections and prescription meds every day at the clinic, so at your house it's just part of the visit.</p>
     </div>
     <div class="needs">
       <div class="glass need reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 9h14M7 15h10"/></svg></div><div><h3>Diabetic pets</h3><p>Insulin on schedule, fed first, every dose logged so your vet can see it.</p></div></div>
@@ -377,7 +377,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   <section id="how">
     <div class="section-head reveal">
       <p class="eyebrow">How it works</p>
-      <h2 style="margin-top:.6rem">Three steps, then you're on the schedule.</h2>
+      <h2 style="margin-top:.6rem">Three easy steps, then you're on the schedule.</h2>
     </div>
     <div class="steps">
       <div class="glass step reveal"><h3>Free meet &amp; greet</h3><p>We come to you. Your pet sizes us up, you walk us through the routine, and we go over meds together if there are any.</p></div>
@@ -390,8 +390,8 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
     <div class="band reveal">
       <div>
         <p class="eyebrow">Why Paws United</p>
-        <h2 style="margin-top:.6rem">Clinic-level care, at home.</h2>
-        <p style="margin-top:.9rem">We're a two-person team, not a roster of part-timers. The people you meet at the meet &amp; greet are the only people who will ever be in your house.</p>
+        <h2 style="margin-top:.6rem">Clinic-level care, living-room comfort.</h2>
+        <p style="margin-top:.9rem">We're two people, not a roster of part-timers. The faces you meet at the meet &amp; greet are the only ones who will ever be in your house, and your pet will know us by name.</p>
       </div>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Licensed veterinary technician on every medical visit</li>
@@ -406,7 +406,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   <section id="team">
     <div class="section-head reveal">
       <p class="eyebrow">About us</p>
-      <h2 style="margin-top:.6rem">Two people. You'll know both.</h2>
+      <h2 style="margin-top:.6rem">Two people. Your pets will know both.</h2>
     </div>
     <div class="team">
       <div class="glass person reveal">
@@ -433,7 +433,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
   <section id="reviews">
     <div class="section-head reveal">
       <p class="eyebrow">Reviews</p>
-      <h2 style="margin-top:.6rem">What clients say.</h2>
+      <h2 style="margin-top:.6rem">Kind words from the neighborhood.</h2>
       <p><span class="ph">Replace these three examples with real Google reviews, first names and towns.</span></p>
     </div>
     <div class="reviews">
@@ -450,8 +450,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
         <svg viewBox="0 0 300 300" role="img" aria-label="Map of towns served around Phoenixville">
           <circle class="ring" cx="150" cy="150" r="45"/><circle class="ring" cx="150" cy="150" r="90"/><circle class="ring" cx="150" cy="150" r="135"/>
           <line class="axis" x1="150" y1="15" x2="150" y2="285"/><line class="axis" x1="15" y1="150" x2="285" y2="150"/>
-          <g class="sweep"><path d="M150 150 L150 15 A135 135 0 0 1 245 55 Z" fill="url(#sw)"/></g>
-          <defs><linearGradient id="sw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4FF2C4" stop-opacity=".35"/><stop offset="1" stop-color="#4FF2C4" stop-opacity="0"/></linearGradient></defs>
+          <circle class="home" cx="150" cy="150" r="8"/>
           <!-- positions approximate, ~9px per mile, north up -->
           <circle class="town core" cx="150" cy="150" r="5"/><text class="lbl core" x="158" y="154">Phoenixville</text>
           <circle class="town" cx="122" cy="160" r="3"/><text class="lbl" x="84" y="172">Kimberton</text>
@@ -471,7 +470,7 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
         <div class="areas">
           <span class="core">Phoenixville</span><span>Kimberton</span><span>Spring City</span><span>Royersford</span><span>Limerick</span><span>Collegeville</span><span>Schwenksville</span><span>Pottstown</span>
         </div>
-        <p class="fine" style="margin-top:1rem;font-family:var(--mono);font-size:.78rem">ZIP 19460 · 19442 · 19475 · 19468 · 19426 · 19473 · 19464 <span class="ph">(confirm core zone)</span></p>
+        <p class="fine" style="margin-top:1rem">ZIP 19460 · 19442 · 19475 · 19468 · 19426 · 19473 · 19464 <span class="ph">(confirm core zone)</span></p>
       </div>
     </div>
   </section>
@@ -496,8 +495,8 @@ footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
     <div class="book">
       <div class="section-head reveal" style="margin-bottom:0">
         <p class="eyebrow">Get started</p>
-        <h2 style="margin-top:.6rem">Schedule a free meet &amp; greet.</h2>
-        <p>Tell us about your pet and we'll text you back the same day. Or call <a href="tel:+10000000000"><span class="ph">(000) 000-0000</span></a>.</p>
+        <h2 style="margin-top:.6rem">Let's meet your pet.</h2>
+        <p>Tell us a little about them and we'll text you back the same day to set up a free meet &amp; greet. Or call <a href="tel:+10000000000"><span class="ph">(000) 000-0000</span></a>.</p>
         <p class="fine" style="margin-top:1rem">Existing clients: <a href="#">book through your client portal</a> <span class="ph">(DoTimely link)</span>.</p>
       </div>
       <form class="glass reveal" action="#" method="post" onsubmit="event.preventDefault();this.querySelector('button').textContent='Request sent ✓';">
@@ -594,7 +593,7 @@ $("#faq-cancel").textContent = RATES.cancellation.map(([w, r]) => `${w}: ${r.toL
 
 // live clock in the console card
 const clock = $("#clock");
-if (clock) setInterval(() => { clock.textContent = new Date().toTimeString().slice(0, 8); }, 1000);
+if (clock) setInterval(() => { clock.textContent = new Date().toLocaleTimeString([], {hour:"numeric", minute:"2-digit"}).toLowerCase(); }, 1000);
 
 // count-up stats and scroll reveal. Everything is visible at rest; motion only adds.
 const motionOK = !matchMedia("(prefers-reduced-motion: reduce)").matches;
