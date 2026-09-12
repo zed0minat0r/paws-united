@@ -240,6 +240,21 @@ img{max-width:100%;display:block}
 .motion .eyebrow::before{content:"";position:absolute;left:0;top:50%;height:2px;width:1.1rem;background:var(--mint);transform-origin:left;transform:scaleX(0);transition:transform .7s ease .2s}
 .motion .eyebrow.on::before,.motion .section-head:not(.pre) .eyebrow::before{transform:scaleX(1)}
 
+/* gold glow on hover / focus, for any box or blurb */
+.glass,.faq details,.map,.fold summary .section-head,.need,.svc{transition:box-shadow .35s ease,border-color .35s ease,transform .2s ease}
+.glass:hover,.faq details:hover,.map:hover,form:focus-within{border-color:rgba(234,196,106,.55);box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 48px -6px rgba(234,196,106,.55),0 24px 50px -30px rgba(0,0,0,.7);animation:goldpulse 2.2s ease-in-out infinite}
+.glass:hover::before{background:linear-gradient(135deg,rgba(234,196,106,.9),rgba(234,196,106,.15) 45%,rgba(234,196,106,.9));background-size:200% 200%;animation:goldsweep 2.4s linear infinite}
+.fold summary:hover .chev{border-color:rgba(234,196,106,.7);box-shadow:0 0 22px -2px rgba(234,196,106,.7)}
+.fold summary:hover h2 .w{color:var(--amber);text-shadow:0 0 18px rgba(234,196,106,.45)}
+.fold summary h2 .w{transition:color .3s ease,text-shadow .3s ease}
+.section-head:hover .eyebrow{color:var(--amber);text-shadow:0 0 12px rgba(234,196,106,.6)}
+.eyebrow{transition:color .3s ease,text-shadow .3s ease}
+.areas span:hover{border-color:var(--amber);color:var(--amber);box-shadow:0 0 18px -2px rgba(234,196,106,.6)}
+.areas span{transition:box-shadow .3s ease,border-color .3s ease,color .3s ease}
+@keyframes goldpulse{0%,100%{box-shadow:0 0 0 1px rgba(234,196,106,.35),0 0 40px -8px rgba(234,196,106,.45),0 24px 50px -30px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 1px rgba(234,196,106,.6),0 0 64px -4px rgba(234,196,106,.75),0 24px 50px -30px rgba(0,0,0,.7)}}
+@keyframes goldsweep{to{background-position:200% 200%}}
+@media (prefers-reduced-motion:reduce){.glass:hover,.faq details:hover,.map:hover,form:focus-within{animation:none}.glass:hover::before{animation:none}}
+
 /* collapsible sections */
 .fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .fold summary::-webkit-details-marker{display:none}
