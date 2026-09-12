@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paws United Pet Sitting · In-home pet care by a licensed vet tech, Phoenixville PA</title>
+<meta name="description" content="In-home pet sitting and overnight care in Phoenixville, PA by a licensed veterinary technician. Insulin, injections, post-surgical and senior pet care. Serving Royersford, Limerick, Collegeville, Spring City, Pottstown, Schwenksville and Kimberton.">
+<meta name="theme-color" content="#070B12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Paws United Pet Sitting","description":"In-home pet sitting and overnight pet care by a licensed veterinary technician.","telephone":"+1-000-000-0000","email":"hello@pawsunited.com","url":"https://pawsunited.com","priceRange":"$$","address":{"@type":"PostalAddress","addressLocality":"Phoenixville","addressRegion":"PA","postalCode":"19460","addressCountry":"US"},"areaServed":["Phoenixville","Royersford","Limerick","Collegeville","Spring City","Pottstown","Schwenksville","Kimberton"],"openingHours":"Mo-Su 07:00-21:00"}
+</script>
+<style>
+/* Single deliberate dark world: a monitoring console for pets. Every color painted explicitly. */
+:root{
+  --bg:#070B12; --bg2:#0B1220; --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.06);
+  --ink:#EAF1F6; --muted:#8EA0B2; --dim:#5C6B7A; --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --mint:#4FF2C4; --mint-dim:rgba(79,242,196,.14); --mint-ink:#0A3B2E;
+  --amber:#FFB454; --amber-ink:#2A1600;
+  --ph-bg:#3A2A0A; --ph-ink:#FFD28A;
+  --display:"Sora",ui-sans-serif,system-ui,sans-serif;
+  --body:"Manrope",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:18px; --tap:50px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(var(--tap) + 1.6rem + env(safe-area-inset-bottom));overflow-x:hidden}
+/* ambient: two drifting light fields and a faint grid, fixed behind everything */
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(60% 45% at 15% 5%,rgba(79,242,196,.16),transparent 60%),
+  radial-gradient(45% 40% at 90% 20%,rgba(96,140,255,.14),transparent 60%),
+  radial-gradient(50% 50% at 60% 100%,rgba(255,180,84,.08),transparent 60%),var(--bg)}
+.ambient::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(70% 60% at 50% 0%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(70% 60% at 50% 0%,#000 20%,transparent 100%);opacity:.5}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.orb.a{width:46vw;height:46vw;left:-12vw;top:-8vw;background:#1ED9A6}
+.orb.b{width:38vw;height:38vw;right:-10vw;top:12vw;background:#4C7DFF;animation-duration:28s}
+@keyframes drift{to{transform:translate3d(6vw,8vw,0) scale(1.12)}}
+
+h1,h2,h3{font-family:var(--display);line-height:1.04;text-wrap:balance;margin:0;letter-spacing:-.025em}
+h1{font-size:clamp(2.3rem,10vw,5.2rem);font-weight:800}
+h2{font-size:clamp(1.8rem,6.8vw,3rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 2rem));margin-inline:auto}
+.eyebrow{font-family:var(--mono);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
+.eyebrow::before{content:"// "}
+.ph{background:var(--ph-bg);color:var(--ph-ink);padding:0 .3em;border-radius:4px;font-weight:600;font-size:.92em}
+.grad{background:linear-gradient(92deg,#FFFFFF 0%,var(--mint) 55%,#9AD0FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:var(--tap);padding:.8rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;font-family:var(--body);font-size:1rem;position:relative;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.btn-primary{background:var(--amber);color:var(--amber-ink);box-shadow:0 0 0 0 rgba(255,180,84,.0),0 10px 30px -12px rgba(255,180,84,.7)}
+.btn-primary:hover{box-shadow:0 0 0 6px rgba(255,180,84,.12),0 14px 34px -12px rgba(255,180,84,.8);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink);background:var(--surface);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:var(--surface-2)}
+
+/* glass */
+.glass{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);position:relative}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(255,255,255,0) 40%,rgba(79,242,196,.25));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+/* nav */
+.navwrap{position:sticky;top:0;z-index:30;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:rgba(7,11,18,.6);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
+.brand .mark{width:34px;height:34px;flex:none;border-radius:10px;background:linear-gradient(135deg,var(--mint),#4C7DFF);display:grid;place-items:center;box-shadow:0 0 24px -4px rgba(79,242,196,.6)}
+.brand .mark svg{width:20px;height:20px}
+.nav ul{display:none;gap:1.5rem;list-style:none;margin:0;padding:0;font-weight:600;font-size:.95rem}
+.nav ul a{text-decoration:none;color:var(--muted);transition:color .15s}
+.nav ul a:hover{color:var(--ink)}
+.nav .call{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;padding:0 .9rem;border-radius:999px;border:1px solid var(--line-2);text-decoration:none;font-weight:700;font-size:.9rem;white-space:nowrap;background:var(--surface)}
+.nav .call svg{width:16px;height:16px}
+.nav .book-link{display:none;min-height:44px;padding:.5rem 1.1rem;font-size:.92rem}
+
+/* hero */
+.hero{display:grid;gap:2rem;padding:2.2rem 0 2.6rem}
+.hero .lede{font-size:1.1rem;color:var(--muted);max-width:38ch;margin-top:1.2rem}
+.hero .actions{display:grid;gap:.7rem;margin-top:1.6rem}
+.pill{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .8rem .4rem .5rem;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(79,242,196,.6);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(79,242,196,.6)}100%{box-shadow:0 0 0 10px rgba(79,242,196,0)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.78rem;line-height:1.3;color:var(--muted)}
+.stats strong{display:block;color:var(--ink);font-family:var(--display);font-size:1.35rem;margin-bottom:.15rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stats strong.mint{color:var(--mint)}
+
+/* live visit console */
+.console{padding:1.1rem;width:100%;max-width:440px;font-size:.92rem;overflow:hidden}
+.console header{display:flex;justify-content:space-between;align-items:center;padding-bottom:.8rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.console header b{color:var(--mint);font-weight:600}
+.console .clock{font-variant-numeric:tabular-nums;color:var(--ink)}
+.console .pet{display:flex;gap:.9rem;align-items:center;margin:.9rem 0}
+.console .avatar{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#FFB454,#FF7A59);display:grid;place-items:center;font-family:var(--display);font-weight:800;color:#2A1600;flex:none}
+.console .pet h3{font-size:1.05rem}
+.console .pet p{color:var(--muted);font-size:.82rem}
+.route{display:grid;grid-template-columns:96px 1fr;gap:.9rem;align-items:center;padding:.8rem;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid var(--line)}
+.route svg{width:96px;height:72px;display:block}
+.route .path{fill:none;stroke:var(--mint);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:260;stroke-dashoffset:260;animation:draw 3.2s ease-out .4s forwards}
+.route .pin{fill:var(--amber)}
+.route .home{fill:none;stroke:var(--muted);stroke-width:1.5}
+@keyframes draw{to{stroke-dashoffset:0}}
+.route dl{display:grid;grid-template-columns:auto 1fr;gap:.25rem .7rem;margin:0;font-family:var(--mono);font-size:.74rem}
+.route dt{color:var(--dim)}
+.route dd{margin:0;color:var(--ink)}
+.log{list-style:none;margin:.9rem 0 0;padding:0;display:grid;gap:.45rem;font-family:var(--mono);font-size:.76rem}
+.log li{display:flex;gap:.6rem;align-items:flex-start}
+.motion .log li{opacity:0;transform:translateY(4px);animation:rise .5s ease forwards}
+.motion .log li:nth-child(1){animation-delay:.3s}.motion .log li:nth-child(2){animation-delay:.7s}.motion .log li:nth-child(3){animation-delay:1.1s}.motion .log li:nth-child(4){animation-delay:1.5s}.motion .log li:nth-child(5){animation-delay:1.9s}
+@keyframes rise{to{opacity:1;transform:none}}
+.log .t{color:var(--dim);flex:none;width:3.4rem}
+.log .ok{color:var(--mint)}
+.log .med{color:var(--amber)}
+.console .photo{margin-top:.9rem;height:64px;border-radius:12px;background:linear-gradient(135deg,rgba(79,242,196,.15),rgba(76,125,255,.15));border:1px dashed var(--line-2);display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--muted);font-size:.8rem;font-family:var(--mono)}
+@media (prefers-reduced-motion:reduce){.log li{opacity:1;transform:none;animation:none}.route .path{stroke-dashoffset:0;animation:none}.orb,.pill i,.sweep{animation:none!important}}
+
+section{padding:3rem 0}
+.section-head{max-width:58ch;margin-bottom:1.6rem}
+.section-head p{color:var(--muted);margin-top:.7rem;font-size:1.02rem}
+.reveal{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+.reveal.pre{opacity:.001;transform:translateY(18px)}
+
+/* who this is for */
+.needs{display:grid;gap:.8rem}
+.need{padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:transform .2s ease,border-color .2s ease}
+.need:hover{transform:translateY(-3px);border-color:rgba(79,242,196,.4)}
+.need .ico{flex:none;width:42px;height:42px;border-radius:12px;background:var(--mint-dim);display:grid;place-items:center;color:var(--mint)}
+.need .ico svg{width:22px;height:22px}
+.need p{color:var(--muted);font-size:.95rem;margin-top:.25rem}
+
+/* services */
+.services{display:grid;gap:.9rem}
+.svc{padding:1.3rem;display:grid;grid-template-columns:1fr auto;gap:.3rem .9rem;align-items:start;transition:transform .2s ease,border-color .2s ease}
+.svc:hover{transform:translateY(-3px);border-color:rgba(79,242,196,.4)}
+.svc .dur{grid-column:1/-1;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.svc h3{grid-column:1}
+.svc p{grid-column:1;color:var(--muted);font-size:.95rem}
+.svc .price{grid-column:2;grid-row:2/4;font-family:var(--display);font-size:1.35rem;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;letter-spacing:-.02em}
+.svc .price small{display:block;font-family:var(--body);font-size:.76rem;font-weight:500;color:var(--muted)}
+.svc.medical{background:linear-gradient(160deg,rgba(79,242,196,.14),rgba(255,255,255,.03) 60%);border-color:rgba(79,242,196,.35)}
+.svc.medical .dur{color:var(--mint)}
+
+/* rate card - rendered from RATES */
+.rates{display:grid;gap:1rem}
+.rate-block{padding:1.1rem 1.2rem}
+.rate-block h3{font-size:1rem;margin-bottom:.6rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.rate-block h3 small{font-weight:500;font-size:.78rem;color:var(--muted);font-family:var(--body)}
+.rate-block table{width:100%;border-collapse:collapse;font-size:.95rem}
+.rate-block td{padding:.5rem 0;border-top:1px solid var(--line);vertical-align:top}
+.rate-block tr:first-child td{border-top:0}
+.rate-block td:last-child{text-align:right;padding-left:1rem;font-weight:700;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:.9rem;color:var(--mint);max-width:55%}
+.rate-block td small{display:block;color:var(--muted);font-weight:400;font-family:var(--body);font-size:.82rem}
+.rate-block .foot{color:var(--muted);font-size:.85rem;margin-top:.7rem}
+
+/* how it works */
+.steps{display:grid;gap:1.2rem;counter-reset:step}
+.step{position:relative;padding:1.2rem 1.2rem 1.2rem 4rem}
+.step::before{counter-increment:step;content:"0" counter(step);position:absolute;top:1.2rem;left:1.2rem;font-family:var(--mono);font-size:.8rem;color:var(--mint);letter-spacing:.06em}
+.step p{color:var(--muted);margin-top:.4rem;font-size:.95rem}
+
+/* band */
+.band{border-radius:24px;padding:1.9rem 1.4rem;display:grid;gap:1.4rem;background:linear-gradient(135deg,rgba(79,242,196,.16),rgba(76,125,255,.12) 60%,rgba(255,180,84,.1));border:1px solid var(--line-2);position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;inset:auto -20% -60% auto;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(79,242,196,.25),transparent 65%);pointer-events:none}
+.band p{color:var(--muted)}
+.band ul{list-style:none;margin:0;padding:0;display:grid;gap:.7rem;position:relative}
+.band li{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;font-weight:500}
+.band li svg{flex:none;width:22px;height:22px;margin-top:.1em;color:var(--mint)}
+
+/* team */
+.team{display:grid;gap:1.2rem}
+.person{padding:1.3rem;display:grid;gap:1rem}
+.portrait{aspect-ratio:4/5;max-width:150px;border-radius:14px;background:linear-gradient(160deg,rgba(79,242,196,.18),rgba(76,125,255,.12));border:1px dashed var(--line-2);display:grid;place-items:center;text-align:center;color:var(--muted);font-weight:600;font-size:.85rem;padding:.6rem}
+.person .role{font-family:var(--mono);color:var(--amber);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
+.person p.bio{color:var(--muted);margin-top:.6rem;font-size:.95rem}
+.creds{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.creds li{font-size:.78rem;font-weight:600;padding:.3rem .6rem;border-radius:999px;background:var(--mint-dim);color:var(--mint);border:1px solid rgba(79,242,196,.25)}
+
+/* reviews */
+.reviews{display:grid;gap:.9rem}
+.review{margin:0;padding:1.3rem;display:grid;gap:.6rem}
+.stars{color:var(--amber);letter-spacing:.12em;font-size:.95rem}
+.review blockquote{margin:0;font-size:1.02rem;line-height:1.45}
+.review figcaption{font-size:.82rem;color:var(--muted);font-family:var(--mono)}
+
+/* service area radar */
+.area{display:grid;gap:1.4rem}
+.radar{padding:1rem;display:grid;place-items:center}
+.radar svg{width:100%;max-width:380px;height:auto;display:block}
+.radar .ring{fill:none;stroke:var(--line-2);stroke-width:1}
+.radar .axis{stroke:var(--line);stroke-width:1}
+.radar .town{fill:var(--ink)}
+.radar .town.core{fill:var(--amber)}
+.radar .lbl{font-family:var(--mono);font-size:8.5px;fill:var(--muted);letter-spacing:.02em}
+.radar .lbl.core{fill:var(--amber);font-weight:600}
+.sweep{transform-origin:150px 150px;animation:spin 7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.areas{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.areas span{padding:.5rem .85rem;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);font-weight:600;font-size:.9rem}
+.areas span.core{border-color:var(--amber);color:var(--amber)}
+
+/* faq */
+.faq{display:grid;gap:.5rem;max-width:66ch}
+.faq details{padding:0 1.1rem}
+.faq summary{cursor:pointer;min-height:var(--tap);display:flex;align-items:center;justify-content:space-between;gap:1rem;font-weight:700;padding:.85rem 0;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:1.3rem;color:var(--mint);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);padding:0 0 1rem;font-size:.97rem}
+
+/* form */
+.book{display:grid;gap:1.6rem}
+form{padding:1.3rem;display:grid;gap:.9rem}
+.row{display:grid;gap:.9rem}
+label{display:grid;gap:.35rem;font-weight:600;font-size:.88rem;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:16px;min-height:var(--tap);padding:.7rem .95rem;border:1px solid var(--line-2);border-radius:12px;background:rgba(0,0,0,.3);color:var(--ink);width:100%;transition:border-color .15s,box-shadow .15s}
+input:focus,textarea:focus{border-color:var(--mint);box-shadow:0 0 0 4px rgba(79,242,196,.12);outline:none}
+input::placeholder,textarea::placeholder{color:var(--dim)}
+textarea{min-height:110px;resize:vertical}
+.fine{font-size:.85rem;color:var(--muted)}
+.checks-inline{display:flex;flex-wrap:wrap;gap:.5rem}
+.checks-inline label{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;color:var(--ink);padding:.5rem .8rem;border:1px solid var(--line-2);border-radius:999px;cursor:pointer;font-size:.9rem;min-height:40px}
+.checks-inline label:has(input:checked){border-color:var(--mint);background:var(--mint-dim);color:var(--mint)}
+.checks-inline input{width:auto;min-height:0;accent-color:#4FF2C4;margin:0}
+
+footer{border-top:1px solid var(--line);padding:2rem 0;display:grid;gap:.6rem;color:var(--muted);font-size:.88rem}
+footer a{text-decoration:none}
+footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(7,11,18,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+
+@media (min-width:560px){
+  .services,.needs,.rates,.team{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr 1fr}
+  .hero .actions{display:flex;flex-wrap:wrap}
+  .person{grid-template-columns:130px 1fr;align-items:start}
+  footer{grid-auto-flow:column;justify-content:space-between}
+}
+@media (min-width:860px){
+  body{padding-bottom:0}
+  .stickybar{display:none}
+  .nav ul{display:flex}
+  .nav .call{display:none}
+  .nav .book-link{display:inline-flex}
+  .wrap{width:min(1160px,calc(100% - 3rem))}
+  section{padding:5rem 0}
+  .section-head{margin-bottom:2.6rem}
+  .hero{grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding:4.5rem 0 5rem}
+  .hero .lede{font-size:1.2rem}
+  .console{justify-self:end;transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);padding:1.4rem;box-shadow:0 40px 80px -40px rgba(79,242,196,.35),0 30px 60px -30px rgba(0,0,0,.8)}
+  .stats{display:flex;gap:2rem;font-size:.9rem}
+  .stats strong{font-size:1.7rem}
+  .needs{grid-template-columns:repeat(4,1fr)}
+  .need{flex-direction:column;gap:.7rem;padding:1.4rem}
+  .services{grid-template-columns:repeat(4,1fr);gap:1.1rem}
+  .svc{grid-template-columns:1fr;padding:1.5rem;gap:.7rem}
+  .svc .price{grid-column:1;grid-row:auto;text-align:left}
+  .svc .price small{display:inline}
+  .rates{grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .steps{grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .band{grid-template-columns:1fr 1fr;gap:3rem;padding:3.5rem}
+  .band ul{margin-top:1.2rem}
+  .team{gap:1.4rem}
+  .person{grid-template-columns:160px 1fr;padding:1.6rem}
+  .portrait{max-width:160px}
+  .reviews{grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .area{grid-template-columns:420px 1fr;align-items:center;gap:3rem}
+  .book{grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:start}
+  form{padding:1.8rem}
+}
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div></div>
+
+<div class="navwrap"><div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="#top" aria-label="Paws United Pet Sitting">
+      <span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8" fill="#070B12"/><circle cx="6.2" cy="10" r="2" fill="#070B12"/><circle cx="10" cy="6.8" r="2" fill="#070B12"/><circle cx="14" cy="6.8" r="2" fill="#070B12"/><circle cx="17.8" cy="10" r="2" fill="#070B12"/></svg></span>
+      Paws United
+    </a>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#team">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#area">Area</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="call" href="tel:+10000000000" aria-label="Call Paws United"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>Call</a>
+    <a class="btn btn-primary book-link" href="#book">Schedule a meet &amp; greet</a>
+  </nav>
+</div></div>
+
+<main id="top">
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <span class="pill"><i></i>Phoenixville, PA · now booking</span>
+      <h1 style="margin-top:1.1rem">In-home pet care by a <span class="grad">licensed veterinary technician.</span></h1>
+      <p class="lede">Drop-in visits and overnight stays for pets who need more than a walk: insulin, injections, post-surgery recovery, seniors on a handful of meds. And for the ones who just need dinner and a belly rub.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#book">Schedule a free meet &amp; greet</a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+      <div class="stats">
+        <div><strong class="mint">LVT</strong>licensed vet tech on every medical visit</div>
+        <div><strong data-count="5.0" data-dec="1">0.0</strong>★ on Google <span class="ph">(count)</span></div>
+        <div><strong data-count="100" data-suffix="%">0%</strong>of visits end with a photo report</div>
+      </div>
+    </div>
+
+    <article class="glass console" aria-label="Example live visit report">
+      <header><span><b>●</b> Visit in progress</span><span class="clock" id="clock">07:41:12</span></header>
+      <div class="pet">
+        <div class="avatar">M</div>
+        <div><h3>Mochi · 30-min visit + insulin</h3><p>11 yr DSH · diabetic · Phoenixville</p></div>
+      </div>
+      <div class="route">
+        <svg viewBox="0 0 96 72" aria-hidden="true">
+          <path class="path" d="M10 60 C 20 40, 30 55, 42 38 S 62 18, 78 22 L 86 14"/>
+          <rect class="home" x="5" y="55" width="10" height="10" rx="2"/>
+          <circle class="pin" cx="86" cy="14" r="4"/>
+        </svg>
+        <dl><dt>GPS in</dt><dd>07:38:05</dd><dt>Route</dt><dd>0.4 mi · 3 min</dd><dt>Sitter</dt><dd>LVT on site</dd></dl>
+      </div>
+      <ul class="log">
+        <li><span class="t">07:39</span><span class="ok">✓</span><span>Ate full breakfast, ½ can DM</span></li>
+        <li><span class="t">07:44</span><span class="med">✚</span><span>Vetsulin 3u SC, left flank · logged</span></li>
+        <li><span class="t">07:47</span><span class="ok">✓</span><span>Water refilled · drinking normally</span></li>
+        <li><span class="t">07:52</span><span class="ok">✓</span><span>Litter scooped · output normal</span></li>
+        <li><span class="t">08:06</span><span class="ok">✓</span><span>Doors locked · photo sent to owner</span></li>
+      </ul>
+      <div class="photo">📷 mochi_0806.jpg · delivered</div>
+    </article>
+  </section>
+</div>
+
+<div class="wrap">
+  <section id="who">
+    <div class="section-head reveal">
+      <p class="eyebrow">Who this is for</p>
+      <h2 style="margin-top:.6rem">The pets other sitters can't take.</h2>
+      <p>Most sitters will "try" to give a pill. We administer prescription medication and injections as a matter of course, the same way we do at the clinic.</p>
+    </div>
+    <div class="needs">
+      <div class="glass need reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 9h14M7 15h10"/></svg></div><div><h3>Diabetic pets</h3><p>Insulin on schedule, fed first, every dose logged so your vet can see it.</p></div></div>
+      <div class="glass need reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 12l3-3M4 12l3 3M14 5l6 7-6 7"/></svg></div><div><h3>Post-surgical recovery</h3><p>Incision checks, cone wrangling, activity limits actually followed.</p></div></div>
+      <div class="glass need reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h3>Seniors on multiple meds</h3><p>Morning and evening protocols, sub-Q fluids, no missed doses.</p></div></div>
+      <div class="glass need reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></div><div><h3>Owners afraid to travel</h3><p>If you've cancelled trips because nobody could handle their care, this is your sitter.</p></div></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-head reveal">
+      <p class="eyebrow">Services</p>
+      <h2 style="margin-top:.6rem">Visits and overnights, in your home.</h2>
+      <p>Pets stay where they're comfortable. Every visit ends with a photo and a written report.</p>
+    </div>
+    <div class="services">
+      <div class="glass svc reveal"><span class="dur">15 to 60 min</span><h3>Drop-in visits</h3><p>Feeding, potty, litter, play, a walk if they want one. Dogs, cats, small animals.</p><span class="price" data-rate="dropin-from"></span></div>
+      <div class="glass svc medical reveal"><span class="dur">Vet tech only</span><h3>Medical visits</h3><p>Injections, insulin, oral and topical meds, sub-Q fluids, post-op care. Added to any visit.</p><span class="price" data-rate="med"></span></div>
+      <div class="glass svc reveal"><span class="dur">8 pm to 7 am</span><h3>Overnight stays</h3><p>We sleep at your place. Includes a midday and a dinner visit, and any medication during the stay.</p><span class="price" data-rate="overnight"></span></div>
+      <div class="glass svc reveal"><span class="dur">Recurring</span><h3>Weekly care</h3><p>Standing midday or evening visits while you're at work. Prepaid, cheaper, and your slot is held.</p><span class="price" data-rate="weekly"></span></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="section-head reveal">
+      <p class="eyebrow">Pricing</p>
+      <h2 style="margin-top:.6rem">The full rate card.</h2>
+      <p>No surprises. What's here is what you pay.</p>
+    </div>
+    <div class="rates" id="rates"></div>
+  </section>
+
+  <section id="how">
+    <div class="section-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 style="margin-top:.6rem">Three steps, then you're on the schedule.</h2>
+    </div>
+    <div class="steps">
+      <div class="glass step reveal"><h3>Free meet &amp; greet</h3><p>We come to you. Your pet sizes us up, you walk us through the routine, and we go over meds together if there are any.</p></div>
+      <div class="glass step reveal"><h3>One intake form</h3><p>Vet contact, feeding, medication protocol, entry instructions, emergency contact. Filled out once, on our phones at your door every visit after.</p></div>
+      <div class="glass step reveal"><h3>We visit, you get the report</h3><p>GPS check-in, photo and a written report after every visit, meds logged. Book, change or cancel from your client portal.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="band reveal">
+      <div>
+        <p class="eyebrow">Why Paws United</p>
+        <h2 style="margin-top:.6rem">Clinic-level care, at home.</h2>
+        <p style="margin-top:.9rem">We're a two-person team, not a roster of part-timers. The people you meet at the meet &amp; greet are the only people who will ever be in your house.</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Licensed veterinary technician on every medical visit</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Working alongside a local veterinarian <span class="ph">(name the practice if allowed)</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Insured and bonded <span class="ph">(confirm)</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Overnights, which most local sitters don't offer</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>GPS-stamped visits, keys coded by number, never your address</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="section-head reveal">
+      <p class="eyebrow">About us</p>
+      <h2 style="margin-top:.6rem">Two people. You'll know both.</h2>
+    </div>
+    <div class="team">
+      <div class="glass person reveal">
+        <div class="portrait" role="img" aria-label="Photo coming soon"><span>Photo</span></div>
+        <div>
+          <h3><span class="ph">[Her name]</span>, LVT</h3>
+          <p class="role">Owner · Licensed veterinary technician</p>
+          <p class="bio">Handles every medical visit and most of the schedule. <span class="ph">[2-3 sentences: years as a vet tech, where she works, her own pets, why she started sitting.]</span></p>
+          <ul class="creds"><li>Licensed vet tech, PA</li><li>Injections &amp; insulin</li><li>Sub-Q fluids</li><li>Post-op care</li></ul>
+        </div>
+      </div>
+      <div class="glass person reveal">
+        <div class="portrait" role="img" aria-label="Photo coming soon"><span>Photo</span></div>
+        <div>
+          <h3>Matt</h3>
+          <p class="role">Partner · Visits, scheduling &amp; client care</p>
+          <p class="bio">Covers standard drop-ins and overnights, and runs the booking, reports and everything on your phone. <span class="ph">[2 sentences about Matt.]</span></p>
+          <ul class="creds"><li>Standard visits</li><li>Overnights</li><li>Pet first aid &amp; CPR <span class="ph">?</span></li><li>Background checked <span class="ph">?</span></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-head reveal">
+      <p class="eyebrow">Reviews</p>
+      <h2 style="margin-top:.6rem">What clients say.</h2>
+      <p><span class="ph">Replace these three examples with real Google reviews, first names and towns.</span></p>
+    </div>
+    <div class="reviews">
+      <figure class="glass review reveal"><span class="stars" aria-label="5 stars">★★★★★</span><blockquote><span class="ph">Example:</span> "Our diabetic cat needs insulin twice a day. Nobody else would take him. We took our first vacation in four years."</blockquote><figcaption><span class="ph">[Name]</span> · Phoenixville · medical visits</figcaption></figure>
+      <figure class="glass review reveal"><span class="stars" aria-label="5 stars">★★★★★</span><blockquote><span class="ph">Example:</span> "The report after every visit is the best part. I knew exactly what he ate and when he got his meds."</blockquote><figcaption><span class="ph">[Name]</span> · Collegeville · overnights</figcaption></figure>
+      <figure class="glass review reveal"><span class="stars" aria-label="5 stars">★★★★★</span><blockquote><span class="ph">Example:</span> "Came home to a calm dog and a clean kitchen. Booked her for every trip since."</blockquote><figcaption><span class="ph">[Name]</span> · Royersford · drop-ins</figcaption></figure>
+    </div>
+    <a class="btn btn-ghost" style="margin-top:1.4rem" href="#">Read all reviews on Google <span class="ph">(link)</span></a>
+  </section>
+
+  <section id="area">
+    <div class="area">
+      <div class="glass radar reveal">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Map of towns served around Phoenixville">
+          <circle class="ring" cx="150" cy="150" r="45"/><circle class="ring" cx="150" cy="150" r="90"/><circle class="ring" cx="150" cy="150" r="135"/>
+          <line class="axis" x1="150" y1="15" x2="150" y2="285"/><line class="axis" x1="15" y1="150" x2="285" y2="150"/>
+          <g class="sweep"><path d="M150 150 L150 15 A135 135 0 0 1 245 55 Z" fill="url(#sw)"/></g>
+          <defs><linearGradient id="sw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4FF2C4" stop-opacity=".35"/><stop offset="1" stop-color="#4FF2C4" stop-opacity="0"/></linearGradient></defs>
+          <!-- positions approximate, ~9px per mile, north up -->
+          <circle class="town core" cx="150" cy="150" r="5"/><text class="lbl core" x="158" y="154">Phoenixville</text>
+          <circle class="town" cx="122" cy="160" r="3"/><text class="lbl" x="84" y="172">Kimberton</text>
+          <circle class="town" cx="112" cy="122" r="3"/><text class="lbl" x="70" y="118">Spring City</text>
+          <circle class="town" cx="122" cy="102" r="3"/><text class="lbl" x="128" y="98">Royersford</text>
+          <circle class="town" cx="126" cy="80" r="3"/><text class="lbl" x="132" y="76">Limerick</text>
+          <circle class="town" cx="164" cy="88" r="3"/><text class="lbl" x="170" y="92">Collegeville</text>
+          <circle class="town" cx="170" cy="48" r="3"/><text class="lbl" x="176" y="52">Schwenksville</text>
+          <circle class="town" cx="62" cy="96" r="3"/><text class="lbl" x="34" y="88">Pottstown</text>
+          <text class="lbl" x="150" y="112" text-anchor="middle" opacity=".6">5 mi</text><text class="lbl" x="150" y="67" text-anchor="middle" opacity=".6">10 mi</text>
+        </svg>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Service area</p>
+        <h2 style="margin-top:.6rem">Phoenixville and the towns around it.</h2>
+        <p style="color:var(--muted);margin-top:.7rem">Chester and Montgomery County. Outside the core area adds a small travel fee. Not on the list? Ask.</p>
+        <div class="areas">
+          <span class="core">Phoenixville</span><span>Kimberton</span><span>Spring City</span><span>Royersford</span><span>Limerick</span><span>Collegeville</span><span>Schwenksville</span><span>Pottstown</span>
+        </div>
+        <p class="fine" style="margin-top:1rem;font-family:var(--mono);font-size:.78rem">ZIP 19460 · 19442 · 19475 · 19468 · 19426 · 19473 · 19464 <span class="ph">(confirm core zone)</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-head reveal">
+      <p class="eyebrow">Questions</p>
+      <h2 style="margin-top:.6rem">Things people ask first.</h2>
+    </div>
+    <div class="faq">
+      <details class="glass"><summary>Can you really give injections?</summary><p>Yes. The owner is a licensed veterinary technician and does this at the clinic every day. Insulin, B12, sub-Q fluids, post-op meds. Bring the protocol from your vet and we follow it exactly.</p></details>
+      <details class="glass"><summary>Who comes to my house?</summary><p>One of the two of us, and you'll have met both. Medical visits are always the vet tech. Standard visits and overnights can be either of us.</p></details>
+      <details class="glass"><summary>How do you get in?</summary><p>Lockbox, spare key or smart lock code, your choice. Keys are tagged with a number only, never your name or address.</p></details>
+      <details class="glass"><summary>What does an overnight include?</summary><p>We're at your place from about 8 pm to 7 am, plus a midday visit and a dinner visit. Any medication during the stay is included. Two-night minimum on holidays.</p></details>
+      <details class="glass"><summary>How do I know the visit happened?</summary><p>GPS check-in and check-out, a photo and a written report after every visit: what they ate, meds given and when, anything unusual. Overnights get a morning summary.</p></details>
+      <details class="glass"><summary>What's your cancellation policy?</summary><p id="faq-cancel"></p></details>
+      <details class="glass"><summary>How far ahead should I book?</summary><p>A few days is plenty for visits. Overnights and holidays fill up, so give us a couple of weeks when you can. Inside 48 hours works if we have room, with a small last-minute fee.</p></details>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="book">
+      <div class="section-head reveal" style="margin-bottom:0">
+        <p class="eyebrow">Get started</p>
+        <h2 style="margin-top:.6rem">Schedule a free meet &amp; greet.</h2>
+        <p>Tell us about your pet and we'll text you back the same day. Or call <a href="tel:+10000000000"><span class="ph">(000) 000-0000</span></a>.</p>
+        <p class="fine" style="margin-top:1rem">Existing clients: <a href="#">book through your client portal</a> <span class="ph">(DoTimely link)</span>.</p>
+      </div>
+      <form class="glass reveal" action="#" method="post" onsubmit="event.preventDefault();this.querySelector('button').textContent='Request sent ✓';">
+        <div class="row">
+          <label>Your name<input type="text" name="name" required autocomplete="name"></label>
+          <label>Phone<input type="tel" name="phone" required autocomplete="tel"></label>
+        </div>
+        <div class="row">
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+          <label>Address or town<input type="text" name="address" required autocomplete="street-address"></label>
+        </div>
+        <label>Your pets<input type="text" name="pets" required placeholder="e.g. Mochi, 11 yr cat, diabetic · Biscuit, 3 yr lab"></label>
+        <div>
+          <span style="font-weight:600;font-size:.88rem;color:var(--muted)">What do you need?</span>
+          <div class="checks-inline" style="margin-top:.5rem">
+            <label><input type="checkbox" name="svc" value="dropin">Drop-in visits</label>
+            <label><input type="checkbox" name="svc" value="medical">Meds or injections</label>
+            <label><input type="checkbox" name="svc" value="overnight">Overnights</label>
+            <label><input type="checkbox" name="svc" value="weekly">Weekly recurring</label>
+          </div>
+        </div>
+        <label>Dates<input type="text" name="dates" placeholder="e.g. Oct 3-6, or Mon/Wed/Fri midday"></label>
+        <label>Anything we should know<textarea name="notes" placeholder="Meds and schedule, vet's name, quirks, where the treats are"></textarea></label>
+        <button class="btn btn-primary" type="submit">Request a meet &amp; greet</button>
+        <p class="fine">No payment now. We confirm everything at the meet &amp; greet.</p>
+      </form>
+    </div>
+  </section>
+</div>
+</main>
+
+<div class="wrap">
+  <footer>
+    <div>© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
+    <div class="legal"><a href="tel:+10000000000">(000) 000-0000</a><a href="mailto:hello@pawsunited.com">hello@pawsunited.com</a><a href="#">Service agreement</a><a href="#">Vet release form</a><a href="#faq">Cancellation policy</a></div>
+  </footer>
+</div>
+
+<div class="stickybar" aria-label="Quick actions">
+  <a class="btn btn-ghost" href="tel:+10000000000">Call</a>
+  <a class="btn btn-primary" href="#book">Meet &amp; greet</a>
+</div>
+
+<script>
+// THE ONE PLACE PRICING LIVES. Everything on the page reads from here.
+const RATES = {
+  dropIn: [[15,22],[30,32],[45,42],[60,52]],
+  medication: 10,
+  extraPet: 8,
+  overnight: 135,
+  addOns: [
+    ["Weekends (Sat and Sun)", 5, "per visit"],
+    ["Last-minute, inside 48 hours", 10, "per visit"],
+    ["Litter box cleanup", 5, "per visit"],
+    ["Outside core service area", 10, "per visit"],
+    ["Plants, mail, trash", 10, "per stay"]
+  ],
+  holidays: {
+    visit: 15, overnight: 30, peakOvernight: 45,
+    peakDays: "Thanksgiving, Christmas Eve, Christmas Day and New Year's Eve",
+    minNights: 2, deposit: "50% deposit at booking, nonrefundable"
+  },
+  packages: [
+    ["Weekly visits, prepaid monthly", 28, "per visit"],
+    ["10-visit prepaid pack", 290, "$29 per visit"]
+  ],
+  cancellation: [
+    ["48+ hours before", "Free"],
+    ["24 to 48 hours", "50% of the visit"],
+    ["Under 24 hours or same day", "Full charge"],
+    ["Holidays", "Deposit nonrefundable; full charge inside 7 days"]
+  ]
+};
+
+const $ = (s) => document.querySelector(s);
+const money = (n) => "$" + n;
+const block = (title, rows, foot, sub) => `<div class="glass rate-block reveal"><h3>${title}${sub ? `<small>${sub}</small>` : ""}</h3><table>${rows.map(r => `<tr><td>${r[0]}${r[2] ? `<small>${r[2]}</small>` : ""}</td><td>${r[1]}</td></tr>`).join("")}</table>${foot ? `<p class="foot">${foot}</p>` : ""}</div>`;
+
+const h = RATES.holidays;
+$("#rates").innerHTML = [
+  block("Drop-in visits", RATES.dropIn.map(([m, p]) => [`${m} minutes`, money(p)]), `Medication or injections +${money(RATES.medication)}. Each additional pet +${money(RATES.extraPet)}.`),
+  block("Overnights", [["Per night", money(RATES.overnight), "Midday and dinner visits, 8 pm to 7 am stay, meds included"]], `Holiday overnights +${money(h.overnight)} a night, ${h.minNights}-night minimum.`),
+  block("Add-ons", RATES.addOns.map(([l, p, u]) => [l, "+" + money(p), u])),
+  block("Holidays", [["Visits", "+" + money(h.visit)], ["Overnights", "+" + money(h.overnight)], ["Peak overnights", "+" + money(h.peakOvernight), h.peakDays]], `${h.deposit}. ${h.minNights}-night minimum on holiday overnights.`),
+  block("Recurring clients", RATES.packages.map(([l, p, u]) => [l, money(p), u]), "Your slot is held. Cheapest way to book."),
+  block("Cancellation", RATES.cancellation)
+].join("");
+
+$('[data-rate="dropin-from"]').innerHTML = `from ${money(RATES.dropIn[0][1])} <small>/ visit</small>`;
+$('[data-rate="med"]').innerHTML = `+${money(RATES.medication)} <small>/ visit</small>`;
+$('[data-rate="overnight"]').innerHTML = `${money(RATES.overnight)} <small>/ night</small>`;
+$('[data-rate="weekly"]').innerHTML = `${money(RATES.packages[0][1])} <small>/ visit</small>`;
+$("#faq-cancel").textContent = RATES.cancellation.map(([w, r]) => `${w}: ${r.toLowerCase()}`).join(". ") + ".";
+
+// live clock in the console card
+const clock = $("#clock");
+if (clock) setInterval(() => { clock.textContent = new Date().toTimeString().slice(0, 8); }, 1000);
+
+// count-up stats and scroll reveal. Everything is visible at rest; motion only adds.
+const motionOK = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (motionOK) document.documentElement.classList.add("motion");
+if (motionOK && "IntersectionObserver" in window) {
+  document.querySelectorAll(".reveal").forEach((el, i) => {
+    const r = el.getBoundingClientRect();
+    if (r.top > innerHeight) { el.classList.add("pre"); el.style.transitionDelay = (i % 4) * 70 + "ms"; }
+  });
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.remove("pre");
+    e.target.querySelectorAll("[data-count]").forEach(countUp);
+    if (e.target.hasAttribute("data-count")) countUp(e.target);
+    io.unobserve(e.target);
+  }), { threshold: .15 });
+  document.querySelectorAll(".reveal, .stats").forEach((el) => io.observe(el));
+} else {
+  document.querySelectorAll("[data-count]").forEach((el) => { el.textContent = el.dataset.count + (el.dataset.suffix || ""); });
+}
+function countUp(el) {
+  if (el.dataset.done) return; el.dataset.done = 1;
+  const to = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || "", t0 = performance.now();
+  (function f(t) { const k = Math.min(1, (t - t0) / 1100), v = to * (1 - Math.pow(1 - k, 3)); el.textContent = v.toFixed(dec) + suf; if (k < 1) requestAnimationFrame(f); })(t0);
+}
+</script>
+</body>
+</html>
