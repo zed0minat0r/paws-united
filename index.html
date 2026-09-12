@@ -268,54 +268,56 @@ img{max-width:100%;display:block}
 @media (prefers-reduced-motion:reduce){.glass::after,.faq details::after,.map::after,.areas span::after,form::after{animation:none!important;transition:none}}
 
 /* splash: paw prints trot in, the retriever gallops in along the ground and settles, sparks, the name blurs in, then it all lifts away */
-.splash{position:fixed;inset:0;z-index:100;background:radial-gradient(90% 55% at 50% 78%,rgba(234,196,106,.22),transparent 60%),radial-gradient(70% 60% at 50% 40%,#17281E,var(--bg) 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1rem calc(4rem + env(safe-area-inset-bottom));transition:opacity 1s ease,transform 1s ease,filter 1s ease;overflow:hidden}
+.splash{position:fixed;inset:0;z-index:100;background:radial-gradient(90% 55% at 50% 78%,rgba(234,196,106,.22),transparent 60%),radial-gradient(70% 60% at 50% 40%,#17281E,var(--bg) 70%);transition:opacity 1s ease,transform 1s ease,filter 1s ease;overflow:hidden}
+/* one composition, designed at 1280x820, scaled to whatever screen it lands on so phone and desktop match */
+.frame{position:absolute;left:50%;top:50%;width:1280px;height:820px;transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:50% 50%}
 .splash::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 80% at 50% 50%,transparent 55%,rgba(0,0,0,.55))}
 .splash.done{opacity:0;transform:scale(1.08);filter:blur(6px);pointer-events:none}
 .splash canvas{position:absolute;inset:0;width:100%;height:100%}
-.splash-scene{position:relative;z-index:1;width:min(420px,80vw,46vh)}
+.splash-scene{position:absolute;z-index:1;width:420px;left:430px;top:220px}
 .stage{position:relative}
-.paws{position:absolute;left:-120vw;right:-120vw;top:0;bottom:0;pointer-events:none;z-index:0}
+.paws{position:absolute;left:-1000px;right:-1000px;top:0;bottom:0;pointer-events:none;z-index:0}
 .pp{position:absolute;width:22px;height:22px;margin-left:-11px;opacity:0;transform:scale(0) rotate(var(--rot,-12deg));animation:pawpop .45s cubic-bezier(.2,1.6,.3,1) forwards,pawfade 2.6s ease 1.2s forwards}
 @keyframes pawfade{to{opacity:.15}}
 .pp svg{width:100%;height:100%;fill:rgba(234,196,106,.7);filter:drop-shadow(0 0 5px rgba(234,196,106,.6));transform:scaleY(.7)}
 @keyframes pawpop{to{opacity:.9;transform:scale(1) rotate(var(--rot,-12deg))}}
-.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity}
+.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity;width:420px}
 .runner .lottie{transform-origin:50% 71%}
 /* bark: a bubble and two sound arcs by his nose, popped in by JS during the hop */
 .bark{position:absolute;left:84%;top:8%;pointer-events:none;opacity:0;transform:scale(.4) translateY(10px);transform-origin:0 100%}
 .bark.on{animation:barkpop .55s cubic-bezier(.2,1.6,.3,1) forwards}
 .bark.off{transition:opacity .25s ease,transform .25s ease;opacity:0;transform:scale(.6) translateY(-6px)}
 @keyframes barkpop{to{opacity:1;transform:none}}
-.bubble{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(1rem,4.2vw,1.35rem);color:var(--bg);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35em .7em;border-radius:999px 999px 999px 4px;box-shadow:0 0 24px rgba(234,196,106,.6);letter-spacing:-.01em}
+.bubble{display:inline-block;font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--bg);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35em .7em;border-radius:999px 999px 999px 4px;box-shadow:0 0 24px rgba(234,196,106,.6);letter-spacing:-.01em}
 .lottie{width:100%;aspect-ratio:1;position:relative;z-index:1}
 .runner::before{content:"";position:absolute;left:18%;top:22%;width:64%;height:56%;border-radius:50%;background:radial-gradient(closest-side,rgba(234,196,106,.28),rgba(234,196,106,0));pointer-events:none}
 .lottie svg{display:block}
 /* the environment: scenery behind, a deeper sidewalk, all anchored to the dog's foot line by JS */
-.groundset{position:absolute;left:0;right:0;top:64%;height:0;opacity:0;animation:swin 1.2s ease .05s forwards;pointer-events:none;z-index:0}
+.groundset{position:absolute;left:0;right:0;top:520px;height:0;opacity:0;animation:swin 1.2s ease .05s forwards;pointer-events:none;z-index:0}
 @keyframes swin{to{opacity:1}}
-.scenery{position:absolute;left:50%;bottom:6px;width:max(100vw,760px);height:auto;transform:translateX(-50%);display:block}
-.sidewalk{position:absolute;left:-10vw;right:-10vw;top:-6px;height:58px}
+.scenery{position:absolute;left:50%;bottom:6px;width:1280px;height:auto;transform:translateX(-50%);display:block}
+.sidewalk{position:absolute;left:-600px;right:-600px;top:-6px;height:58px}
 .sw-top{height:34px;background:repeating-linear-gradient(90deg,#3F4F43 0 150px,#2A3A30 150px 156px);transform:perspective(260px) rotateX(62deg);transform-origin:50% 100%;border-top:1px solid rgba(169,207,166,.25);box-shadow:inset 0 -10px 16px -8px rgba(0,0,0,.55);position:relative}
 .sw-top::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(0,0,0,.05) 9px 10px)}
 .sw-top::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0,transparent 8%,transparent 92%,var(--bg) 100%);opacity:.7}
 .sw-face{height:22px;background:linear-gradient(#2E4034,#1E2C24);border-top:1.5px solid rgba(234,196,106,.75);box-shadow:0 0 18px rgba(234,196,106,.25);position:relative}
 .sw-face::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0,transparent 8%,transparent 92%,var(--bg) 100%);opacity:.7}
 /* real grass (traced silhouette, CC0): a verge behind the slab, a taller stand in front that fades down */
-.verge{position:absolute;left:-10vw;right:-10vw;bottom:2px;height:30px;background:url(img/grass-back.png) repeat-x center bottom/auto 30px;opacity:.85}
-.fgrass{position:absolute;left:-10vw;right:-10vw;top:22px;height:64px;background:url(img/grass-front.png) repeat-x 30% top/auto 64px;opacity:.75;-webkit-mask-image:linear-gradient(#000 30%,transparent 88%);mask-image:linear-gradient(#000 30%,transparent 88%)}
-.paws{position:absolute;left:-120vw;right:-120vw;top:0;bottom:0;pointer-events:none;z-index:0}
+.verge{position:absolute;left:-600px;right:-600px;bottom:2px;height:30px;background:url(img/grass-back.png) repeat-x center bottom/auto 30px;opacity:.85}
+.fgrass{position:absolute;left:-600px;right:-600px;top:22px;height:64px;background:url(img/grass-front.png) repeat-x 30% top/auto 64px;opacity:.75;-webkit-mask-image:linear-gradient(#000 30%,transparent 88%);mask-image:linear-gradient(#000 30%,transparent 88%)}
+.paws{position:absolute;left:-1000px;right:-1000px;top:0;bottom:0;pointer-events:none;z-index:0}
 .pp{position:absolute;width:22px;height:22px;margin-left:-11px;opacity:0;transform:scale(0) rotate(var(--rot,-12deg));animation:pawpop .45s cubic-bezier(.2,1.6,.3,1) forwards,pawfade 2.6s ease 1.2s forwards}
 @keyframes pawfade{to{opacity:.15}}
 .pp svg{width:100%;height:100%;fill:rgba(234,196,106,.7);filter:drop-shadow(0 0 5px rgba(234,196,106,.6));transform:scaleY(.7)}
 @keyframes pawpop{to{opacity:.9;transform:scale(1) rotate(var(--rot,-12deg))}}
-.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity}
+.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity;width:420px}
 .runner .lottie{transform-origin:50% 71%}
 /* bark: a bubble and two sound arcs by his nose, popped in by JS during the hop */
 .bark{position:absolute;left:84%;top:8%;pointer-events:none;opacity:0;transform:scale(.4) translateY(10px);transform-origin:0 100%}
 .bark.on{animation:barkpop .55s cubic-bezier(.2,1.6,.3,1) forwards}
 .bark.off{transition:opacity .25s ease,transform .25s ease;opacity:0;transform:scale(.6) translateY(-6px)}
 @keyframes barkpop{to{opacity:1;transform:none}}
-.bubble{display:inline-block;font-family:var(--display);font-weight:800;font-size:clamp(1rem,4.2vw,1.35rem);color:var(--bg);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35em .7em;border-radius:999px 999px 999px 4px;box-shadow:0 0 24px rgba(234,196,106,.6);letter-spacing:-.01em}
+.bubble{display:inline-block;font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--bg);background:linear-gradient(135deg,#F6E2A6,#EAC46A);padding:.35em .7em;border-radius:999px 999px 999px 4px;box-shadow:0 0 24px rgba(234,196,106,.6);letter-spacing:-.01em}
 .lottie{width:100%;aspect-ratio:1;position:relative;z-index:1}
 .runner::before{content:"";position:absolute;left:18%;top:22%;width:64%;height:56%;border-radius:50%;background:radial-gradient(closest-side,rgba(234,196,106,.28),rgba(234,196,106,0));pointer-events:none}
 .lottie svg{display:block}
@@ -327,13 +329,13 @@ img{max-width:100%;display:block}
 .sw-face{height:16px;background:linear-gradient(#2B3A30,#1C2822);border-top:1.5px solid rgba(234,196,106,.85);box-shadow:0 0 18px rgba(234,196,106,.35),0 12px 24px -8px rgba(0,0,0,.8);position:relative}
 .sw-face::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0,transparent 25%,transparent 75%,var(--bg) 100%);opacity:.9}
 @keyframes groundin{to{transform:scaleX(1)}}
-.splash-word{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,9vw,4.2rem);letter-spacing:-.03em;margin-top:.6rem;display:flex;position:relative;z-index:1}
+.splash-word{font-family:var(--display);font-weight:800;font-size:4rem;letter-spacing:-.03em;display:flex;position:absolute;left:0;right:0;top:600px;justify-content:center;z-index:1}
 .splash-word span{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.5em) scale(.9);animation:letter .9s cubic-bezier(.2,1,.3,1) forwards;background:linear-gradient(92deg,#F1F5EC,#EAC46A 60%,#A9CFA6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .splash-word span:nth-child(1){animation-delay:3.20s}.splash-word span:nth-child(2){animation-delay:3.24s}.splash-word span:nth-child(3){animation-delay:3.28s}.splash-word span:nth-child(4){animation-delay:3.32s}.splash-word span:nth-child(6){animation-delay:3.36s}.splash-word span:nth-child(7){animation-delay:3.40s}.splash-word span:nth-child(8){animation-delay:3.44s}.splash-word span:nth-child(9){animation-delay:3.48s}.splash-word span:nth-child(10){animation-delay:3.52s}.splash-word span:nth-child(11){animation-delay:3.56s}
 .splash-word .sp{animation:none;opacity:1;transform:none;filter:none}
 @keyframes letter{to{opacity:1;filter:blur(0);transform:none}}
-.splash-rule{width:min(240px,60vw);height:2px;margin:.55rem 0 .7rem;background:linear-gradient(90deg,transparent,var(--amber),transparent);transform:scaleX(0);animation:groundin .9s ease 4s forwards}
-.splash-sub{color:var(--muted);font-weight:600;opacity:0;transform:translateY(12px);animation:rise .8s ease 4.3s forwards;letter-spacing:.02em;position:relative;z-index:1}
+.splash-rule{position:absolute;left:520px;width:240px;top:690px;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);transform:scaleX(0);animation:groundin .9s ease 4s forwards}
+.splash-sub{color:var(--muted);font-weight:600;font-size:1.15rem;opacity:0;transform:translateY(12px);animation:rise .8s ease 4.3s forwards;letter-spacing:.02em;position:absolute;left:0;right:0;top:706px;text-align:center;z-index:1}
 .splash-skip{position:absolute;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));background:transparent;border:1px solid var(--line-2);color:var(--muted);border-radius:999px;padding:.5rem 1rem;font:inherit;font-weight:700;cursor:pointer;min-height:44px}
 /* the page arrives underneath as the splash lifts */
 .page-enter{animation:pagein 1.1s cubic-bezier(.2,.7,.2,1) both}
@@ -441,6 +443,7 @@ img{max-width:100%;display:block}
 <body>
 <div class="splash" id="splash" aria-hidden="true">
   <canvas id="burst"></canvas>
+  <div class="frame" id="frame">
   <div class="groundset" id="groundset" aria-hidden="true">
     <svg class="scenery" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax meet">
       <defs>
@@ -489,6 +492,7 @@ img{max-width:100%;display:block}
   <div class="splash-word" aria-label="Paws United"><span>P</span><span>a</span><span>w</span><span>s</span><span class="sp">&nbsp;</span><span>U</span><span>n</span><span>i</span><span>t</span><span>e</span><span>d</span></div>
   <div class="splash-rule"></div>
   <div class="splash-sub">Pet sitting · Phoenixville, PA</div>
+  </div>
   <button class="splash-skip" type="button">Skip</button>
 </div>
 <div class="cta-backdrop" id="ctabackdrop" hidden></div>
@@ -933,13 +937,14 @@ litPass();
     dog = lottie.loadAnimation({ container: document.getElementById("lottie"), renderer: "svg", loop: true, autoplay: false, animationData: window.DOG_WALK });
     dog.setSpeed(1.15);
   }
-  const groundset = document.getElementById("groundset"), stage = splash.querySelector(".stage");
-  const placeGround = () => { const r = stage.getBoundingClientRect(), sr = splash.getBoundingClientRect(); groundset.style.top = (r.bottom - r.height * 0.286 - sr.top) + "px"; };
-  placeGround(); addEventListener("resize", placeGround);
+  // fit the 1280x820 composition: fill the height, crop the sides a little on phones
+  const frame = document.getElementById("frame");
+  let K = 1;
+  const fit = () => { K = Math.max(.3, Math.min(1.15, innerHeight / 820, innerWidth / 900)); frame.style.setProperty("--k", K); };
+  fit(); addEventListener("resize", fit);
   // One clock drives the body and the legs: the walk cycle plays at a speed proportional to how fast
   // the dog is actually moving, so the legs stop exactly when he does.
-  let runnerW = runner.getBoundingClientRect().width; addEventListener("resize", () => { runnerW = runner.getBoundingClientRect().width; });
-  const W = () => runnerW;
+  const W = () => 420 * K; // runner width on screen
   const easeOut = (p) => 1 - Math.pow(1 - p, 3), easeIn = (p) => p * p * p;
   const T = { start: .3, inDur: 2.7, hold: 2.3, outDur: 2.2 };
   let moving = false, lastX = null, lastT = null, stopped = false, hopped = false, landed = false;
@@ -985,8 +990,8 @@ litPass();
   let pawSide = 0, lastPawX = -1e9;
   const dropPaw = () => {
     const rr = runner.getBoundingClientRect(), lr = pawsLayer.getBoundingClientRect();
-    const x = rr.left + rr.width * 0.27 - lr.left, y = rr.bottom - rr.height * 0.29 - lr.top;
-    if (Math.abs(x - lastPawX) < rr.width * 0.11) return; lastPawX = x;
+    const x = (rr.left - lr.left) / K + 420 * 0.27, y = (rr.bottom - lr.top) / K - 420 * 0.29;
+    if (Math.abs(x - lastPawX) < 420 * 0.11) return; lastPawX = x;
     const el = document.createElement("span"); el.className = "pp"; el.style.left = x + "px"; el.style.top = (y - 8 + (pawSide ? 6 : -4)) + "px"; el.style.setProperty("--rot", pawSide ? "10deg" : "-10deg"); el.innerHTML = pawSvg; pawsLayer.appendChild(el); pawSide ^= 1;
   };
   const pawTimer = setInterval(() => { if (runner.dataset.moving) dropPaw(); }, 90);
