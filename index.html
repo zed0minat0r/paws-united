@@ -276,11 +276,7 @@ img{max-width:100%;display:block}
 @keyframes pawfade{to{opacity:.15}}
 .pp svg{width:100%;height:100%;fill:rgba(234,196,106,.7);filter:drop-shadow(0 0 5px rgba(234,196,106,.6));transform:scaleY(.7)}
 @keyframes pawpop{to{opacity:.9;transform:scale(1) rotate(var(--rot,-12deg))}}
-.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%)}
-.runner.in{animation:walkin 2.7s cubic-bezier(.3,.6,.25,1) forwards}
-.runner.out{animation:walkout 2.2s cubic-bezier(.6,.1,.8,.6) forwards}
-@keyframes walkin{0%{opacity:0;transform:translateX(-150%)}18%{opacity:1}100%{opacity:1;transform:translateX(0)}}
-@keyframes walkout{0%{opacity:1;transform:translateX(0)}80%{opacity:1}100%{opacity:0;transform:translateX(160%)}}
+.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity}
 .lottie{width:100%;aspect-ratio:1;filter:drop-shadow(0 0 28px rgba(234,196,106,.5)) saturate(.9)}
 .lottie svg{display:block}
 /* the environment: scenery behind, a deeper sidewalk, all anchored to the dog's foot line by JS */
@@ -299,11 +295,7 @@ img{max-width:100%;display:block}
 @keyframes pawfade{to{opacity:.15}}
 .pp svg{width:100%;height:100%;fill:rgba(234,196,106,.7);filter:drop-shadow(0 0 5px rgba(234,196,106,.6));transform:scaleY(.7)}
 @keyframes pawpop{to{opacity:.9;transform:scale(1) rotate(var(--rot,-12deg))}}
-.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%)}
-.runner.in{animation:walkin 2.7s cubic-bezier(.3,.6,.25,1) forwards}
-.runner.out{animation:walkout 2.2s cubic-bezier(.6,.1,.8,.6) forwards}
-@keyframes walkin{0%{opacity:0;transform:translateX(-150%)}18%{opacity:1}100%{opacity:1;transform:translateX(0)}}
-@keyframes walkout{0%{opacity:1;transform:translateX(0)}80%{opacity:1}100%{opacity:0;transform:translateX(160%)}}
+.runner{position:relative;z-index:1;opacity:0;transform:translateX(-150%);will-change:transform,opacity}
 .lottie{width:100%;aspect-ratio:1;filter:drop-shadow(0 0 28px rgba(234,196,106,.5)) saturate(.9)}
 .lottie svg{display:block}
 /* a side-view sidewalk: perspective top slab with seams, a curb face, a gold edge the dog walks along */
@@ -868,8 +860,33 @@ litPass();
   const groundset = document.getElementById("groundset"), stage = splash.querySelector(".stage");
   const placeGround = () => { const r = stage.getBoundingClientRect(), sr = splash.getBoundingClientRect(); groundset.style.top = (r.bottom - r.height * 0.286 - sr.top) + "px"; };
   placeGround(); addEventListener("resize", placeGround);
-  setTimeout(() => { runner.classList.add("in"); if (dog) dog.play(); }, 300);
-  // paw prints left behind: placed where the back foot is, alternating left/right, while the dog moves
+  // One clock drives the body and the legs: the walk cycle plays at a speed proportional to how fast
+  // the dog is actually moving, so the legs stop exactly when he does.
+  const W = () => runner.getBoundingClientRect().width;
+  const easeOut = (p) => 1 - Math.pow(1 - p, 3), easeIn = (p) => p * p * p;
+  const T = { start: .3, inDur: 2.7, hold: 2.3, outDur: 2.2 };
+  let moving = false, lastX = null, lastT = null, stopped = false;
+  const setDogSpeed = (vPxPerS) => { if (!dog) return; const k = Math.max(0, Math.min(1.7, vPxPerS / (W() * 0.55))); if (k < .08) { if (moving) { dog.goToAndStop(0, true); moving = false; } } else { if (!moving) { dog.play(); moving = true; } dog.setSpeed(k); } };
+  const clock0 = performance.now();
+  (function drive(now) {
+    if (!document.body.contains(runner)) return;
+    const t = (now - clock0) / 1000; let x, op = 1, phase;
+    if (t < T.start) { x = -1.5; op = 0; phase = "wait"; }
+    else if (t < T.start + T.inDur) { const p = (t - T.start) / T.inDur; x = -1.5 + 1.5 * easeOut(p); op = Math.min(1, p / .18); phase = "in"; }
+    else if (t < T.start + T.inDur + T.hold) { x = 0; phase = "hold"; }
+    else if (t < T.start + T.inDur + T.hold + T.outDur) { const p = (t - T.start - T.inDur - T.hold) / T.outDur; x = 1.6 * easeIn(p); op = p > .8 ? 1 - (p - .8) / .2 : 1; phase = "out"; }
+    else { x = 1.6; op = 0; phase = "done"; }
+    runner.style.transform = `translateX(${x * 100}%)`; runner.style.opacity = op;
+    const px = x * W(); let v = 0;
+    if (lastX !== null) v = Math.abs(px - lastX) / Math.max(1e-3, (now - lastT) / 1000);
+    lastX = px; lastT = now;
+    if (phase === "in" || phase === "out") { setDogSpeed(v); runner.dataset.moving = v > 6 ? "1" : ""; } else { setDogSpeed(0); runner.dataset.moving = ""; }
+    if (phase === "hold" && !stopped) { stopped = true; splash.classList.add("ready"); }
+    if (phase === "out" && dog && !dog.isPaused && !dog.loop) { dog.loop = true; }
+    requestAnimationFrame(drive);
+  })(clock0);
+  if (dog) dog.loop = true;
+  // paw prints left behind: placed where the back foot is, alternating left/right, only while he is moving
   const pawsLayer = document.getElementById("paws"), pawSvg = '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="4.5" ry="3.8"/><circle cx="6.2" cy="10" r="2"/><circle cx="10" cy="6.8" r="2"/><circle cx="14" cy="6.8" r="2"/><circle cx="17.8" cy="10" r="2"/></svg>';
   let pawSide = 0, lastPawX = -1e9;
   const dropPaw = () => {
@@ -878,23 +895,23 @@ litPass();
     if (Math.abs(x - lastPawX) < rr.width * 0.11) return; lastPawX = x;
     const el = document.createElement("span"); el.className = "pp"; el.style.left = x + "px"; el.style.top = (y - 8 + (pawSide ? 6 : -4)) + "px"; el.style.setProperty("--rot", pawSide ? "10deg" : "-10deg"); el.innerHTML = pawSvg; pawsLayer.appendChild(el); pawSide ^= 1;
   };
-  const pawTimer = setInterval(() => { if ((runner.classList.contains("in") && !runner.classList.contains("stopped")) || runner.classList.contains("out")) dropPaw(); }, 90);
+  const pawTimer = setInterval(() => { if (runner.dataset.moving) dropPaw(); }, 90);
   setTimeout(() => clearInterval(pawTimer), 7600);
-  setTimeout(() => { if (dog) { dog.loop = false; dog.addEventListener("complete", () => dog.goToAndStop(0, true)); } splash.classList.add("ready"); runner.classList.add("stopped"); }, 2950);
-  setTimeout(() => { if (dog) { dog.loop = true; dog.goToAndPlay(0, true); } runner.classList.remove("in"); runner.classList.add("out"); }, 5300);
-  setTimeout(finish, 7000);
-  // particles: slow fireflies from the start, a gold burst when the fill lands
+  setTimeout(burstLater, (T.start + T.inDur) * 1000 + 100);
+  setTimeout(finish, (T.start + T.inDur + T.hold + T.outDur) * 1000 + 150);
+  let burstLater = () => {};
+  // particles: slow fireflies from the start, a gold burst when the dog stops
   const c = document.getElementById("burst"), ctx = c.getContext("2d");
   const dpr = Math.min(2, devicePixelRatio || 1); c.width = innerWidth * dpr; c.height = innerHeight * dpr; ctx.scale(dpr, dpr);
   const parts = [];
   for (let i = 0; i < 60; i++) parts.push({ x: Math.random() * innerWidth, y: innerHeight * (0.3 + Math.random() * 0.7), vx: (Math.random() - .5) * .3, vy: -(.2 + Math.random() * .5), r: 1 + Math.random() * 2, life: .4 + Math.random() * .6, decay: .002, col: "234,196,106", g: 0 });
   const burst = () => { const rr = runner.getBoundingClientRect(), cx = rr.left + rr.width / 2, cy = rr.top + rr.height * 0.48; for (let i = 0; i < 160; i++) { const a = Math.random() * Math.PI * 2, v = 2 + Math.random() * 9; parts.push({ x: cx + (Math.random() - .5) * 200, y: cy + (Math.random() - .5) * 80, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 1.5, r: 1.5 + Math.random() * 3, life: 1, decay: .012, col: Math.random() < .7 ? "234,196,106" : "169,207,166", g: .1 }); } };
-  setTimeout(burst, 3050);
+  burstLater = burst;
   const t0 = performance.now();
   (function frame() {
     if (!document.body.contains(c)) return;
     const el = (performance.now() - t0) / 1000;
-    if ((el > .45 && el < 2.9) || (el > 5.35 && el < 7.2)) { const rr = runner.getBoundingClientRect(); for (let i = 0; i < 3; i++) parts.push({ x: rr.left + rr.width * (0.18 + Math.random() * .12), y: rr.bottom - rr.height * .29 - Math.random() * 8, vx: -(1.5 + Math.random() * 3), vy: -(.5 + Math.random() * 1.8), r: 1 + Math.random() * 2.2, life: .9, decay: .035, col: "234,196,106", g: -.01 }); }
+    if (runner.dataset.moving) { const rr = runner.getBoundingClientRect(); for (let i = 0; i < 3; i++) parts.push({ x: rr.left + rr.width * (0.18 + Math.random() * .12), y: rr.bottom - rr.height * .29 - Math.random() * 8, vx: -(1.5 + Math.random() * 3), vy: -(.5 + Math.random() * 1.8), r: 1 + Math.random() * 2.2, life: .9, decay: .035, col: "234,196,106", g: -.01 }); }
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     parts.forEach((p) => { if (p.life <= 0) return; p.x += p.vx; p.y += p.vy; p.vy += p.g; p.vx *= .99; p.life -= p.decay; ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0, p.r * p.life), 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.col},${Math.max(0, p.life)})`; ctx.fill(); });
     requestAnimationFrame(frame);
