@@ -6,10 +6,17 @@
 <title>Paws United Pet Sitting · Phoenixville, PA</title>
 <meta name="description" content="Drop-in visits, overnight stays and weekly pet care in Phoenixville, PA, for dogs, cats and everyone else. A licensed vet tech on the team for pets who need medication. Serving Royersford, Limerick, Collegeville, Spring City, Pottstown, Schwenksville and Kimberton.">
 <meta name="theme-color" content="#0F1A14">
+<meta property="og:title" content="Paws United Pet Sitting · Phoenixville, PA">
+<meta property="og:description" content="Drop-in visits, overnight stays and weekly care for dogs, cats and everyone else. A licensed vet tech on the team.">
+<meta property="og:image" content="https://zed0minat0r.github.io/paws-united/img/og.jpg">
+<meta property="og:url" content="https://zed0minat0r.github.io/paws-united/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="img/grass-back.png">
 <link rel="preload" as="image" href="img/grass-front.png">
 <link rel="icon" type="image/svg+xml" href="img/logo-badge.svg">
-<link rel="apple-touch-icon" href="img/logo-badge.svg">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap">
 <script type="application/ld+json">
@@ -948,7 +955,12 @@ litPass();
   backdrop.addEventListener("click", hidePop);
   pop.querySelector(".cta-close").addEventListener("click", hidePop);
   pop.querySelector(".btn").addEventListener("click", hidePop);
+  const seen = (() => { try { return localStorage.getItem("pu_splash_seen") === "1"; } catch (e) { return false; } })();
+  const popSeen = (() => { try { return sessionStorage.getItem("pu_pop_seen") === "1"; } catch (e) { return false; } })();
+  const force = location.search.includes("splash=1");
+  try { localStorage.setItem("pu_splash_seen", "1"); sessionStorage.setItem("pu_pop_seen", "1"); } catch (e) {}
   if (location.search.includes("nosplash")) { splash.remove(); pop.remove(); backdrop.remove(); return; }
+  if (seen && !force) { splash.remove(); if (popSeen) { pop.remove(); backdrop.remove(); } else showPop(); return; }
   if (reduced) { splash.remove(); showPop(); return; }
   let finished = false;
   const finish = () => { if (finished) return; finished = true; splash.classList.add("done"); document.body.style.overflow = ""; document.querySelector("main").classList.add("page-enter"); setTimeout(() => splash.remove(), 1100); setTimeout(showPop, 1000); };
