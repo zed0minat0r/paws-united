@@ -329,13 +329,15 @@ img{max-width:100%;display:block}
 .sw-face{height:16px;background:linear-gradient(#2B3A30,#1C2822);border-top:1.5px solid rgba(234,196,106,.85);box-shadow:0 0 18px rgba(234,196,106,.35),0 12px 24px -8px rgba(0,0,0,.8);position:relative}
 .sw-face::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0,transparent 25%,transparent 75%,var(--bg) 100%);opacity:.9}
 @keyframes groundin{to{transform:scaleX(1)}}
-.splash-word{font-family:var(--display);font-weight:800;font-size:4rem;letter-spacing:-.03em;display:flex;position:absolute;left:0;right:0;top:600px;justify-content:center;z-index:1}
-.splash-word span{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.5em) scale(.9);animation:letter .9s cubic-bezier(.2,1,.3,1) forwards;background:linear-gradient(92deg,#F1F5EC,#EAC46A 60%,#A9CFA6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.splash-word{font-family:var(--display);font-weight:800;font-size:6.4rem;letter-spacing:-.035em;display:flex;position:absolute;left:0;right:0;top:578px;justify-content:center;z-index:1;filter:drop-shadow(0 0 14px rgba(234,196,106,.25));animation:wordglow 3.2s ease-in-out 4.4s infinite}
+@keyframes wordglow{0%,100%{filter:drop-shadow(0 0 14px rgba(234,196,106,.25))}50%{filter:drop-shadow(0 0 30px rgba(234,196,106,.6))}}
+.splash-word span{display:inline-block;opacity:0;transform:translateY(.6em) scale(.7) rotate(-6deg);animation:letter .85s cubic-bezier(.2,1.5,.3,1) forwards,shimmer 2.8s linear 4.4s infinite;background:linear-gradient(100deg,#F1F5EC 0%,#EAC46A 30%,#FFF3C4 50%,#EAC46A 70%,#A9CFA6 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;transform-origin:50% 100%}
+@keyframes shimmer{0%{background-position:120% 0}100%{background-position:-120% 0}}
 .splash-word span:nth-child(1){animation-delay:3.20s}.splash-word span:nth-child(2){animation-delay:3.24s}.splash-word span:nth-child(3){animation-delay:3.28s}.splash-word span:nth-child(4){animation-delay:3.32s}.splash-word span:nth-child(6){animation-delay:3.36s}.splash-word span:nth-child(7){animation-delay:3.40s}.splash-word span:nth-child(8){animation-delay:3.44s}.splash-word span:nth-child(9){animation-delay:3.48s}.splash-word span:nth-child(10){animation-delay:3.52s}.splash-word span:nth-child(11){animation-delay:3.56s}
-.splash-word .sp{animation:none;opacity:1;transform:none;filter:none}
-@keyframes letter{to{opacity:1;filter:blur(0);transform:none}}
-.splash-rule{position:absolute;left:520px;width:240px;top:690px;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);transform:scaleX(0);animation:groundin .9s ease 4s forwards}
-.splash-sub{color:var(--muted);font-weight:600;font-size:1.15rem;opacity:0;transform:translateY(12px);animation:rise .8s ease 4.3s forwards;letter-spacing:.02em;position:absolute;left:0;right:0;top:706px;text-align:center;z-index:1}
+.splash-word .sp{animation:none;opacity:1;transform:none}
+@keyframes letter{to{opacity:1;transform:none}}
+.splash-rule{position:absolute;left:490px;width:300px;top:712px;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);transform:scaleX(0);animation:groundin .9s ease 4s forwards}
+.splash-sub{color:var(--muted);font-weight:600;font-size:1.15rem;opacity:0;transform:translateY(12px);animation:rise .8s ease 4.3s forwards;letter-spacing:.02em;position:absolute;left:0;right:0;top:728px;text-align:center;z-index:1}
 .splash-skip{position:absolute;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));background:transparent;border:1px solid var(--line-2);color:var(--muted);border-radius:999px;padding:.5rem 1rem;font:inherit;font-weight:700;cursor:pointer;min-height:44px}
 /* the page arrives underneath as the splash lifts */
 .page-enter{animation:pagein 1.1s cubic-bezier(.2,.7,.2,1) both}
