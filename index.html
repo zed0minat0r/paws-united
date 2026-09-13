@@ -385,6 +385,25 @@ img{max-width:100%;display:block}
 .wz-done .btn{width:100%}
 @media (prefers-reduced-motion:reduce){.wz-track{transition:none}}
 
+/* collapsed sections carry a teaser so the stack isn't a wall of headings */
+.fold summary{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.1rem 1.1rem 1.2rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .5s ease,background .3s ease}
+.fold summary:hover,.fold summary.lit{border-color:rgba(234,196,106,.35)}
+.fold[open] summary{border-radius:var(--r) var(--r) 0 0;border-bottom-color:transparent}
+.fold[open] .fold-body{border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);padding:1.2rem 1.1rem 1.4rem;background:rgba(214,232,214,.025)}
+.fold[open] .teaser{display:none}
+.teaser{display:flex;flex-wrap:wrap;gap:.5rem .6rem;margin:.9rem 0 0;padding:0;list-style:none;align-items:center}
+.tz{display:inline-flex;align-items:baseline;gap:.35rem;font-size:.86rem;color:var(--muted);font-weight:600}
+.tz b{font-family:var(--display);font-size:1.15rem;color:var(--amber);font-weight:800;letter-spacing:-.01em}
+.tz.chip{padding:.35rem .7rem;border-radius:999px;border:1px solid var(--line-2);background:rgba(0,0,0,.15);color:var(--ink);font-size:.8rem}
+.tsteps{counter-reset:t}
+.tsteps li{position:relative;padding-left:1.7rem;font-size:.86rem;font-weight:600;color:var(--ink)}
+.tsteps li::before{counter-increment:t;content:counter(t);position:absolute;left:0;top:.05rem;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--mint-dim);color:var(--mint);font-size:.72rem;font-weight:800;display:grid;place-items:center}
+.tsteps li+li::after{content:"";position:absolute;left:-.55rem;top:.55rem;width:.3rem;height:.3rem;border-radius:50%;background:var(--amber);opacity:.7}
+.tpeople{gap:.4rem}
+.tav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#A9CFA6,#EAC46A);color:#0F1A14;font-family:var(--display);font-weight:800;display:grid;place-items:center;font-size:1rem;box-shadow:0 0 16px -4px rgba(234,196,106,.6)}
+.tav+.tav{margin-left:-.9rem;border:2px solid var(--bg)}
+.tnames{margin-left:.5rem;font-weight:600;color:var(--muted);font-size:.9rem}
+
 /* collapsible sections */
 .fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .fold summary::-webkit-details-marker{display:none}
@@ -606,7 +625,7 @@ img{max-width:100%;display:block}
       <p class="eyebrow">Pricing</p>
       <h2 style="margin-top:.6rem">The full rate card.</h2>
       <p>No surprises. Tap to see everything, add-ons and holidays included.</p>
-    </div><span class="chev" aria-hidden="true"></span></summary>
+    <div class="teaser"><span class="tz"><b data-rate="t-dropin"></b>30-min drop-in</span><span class="tz"><b data-rate="t-night"></b>overnight</span><span class="tz"><b data-rate="t-med"></b>meds add-on</span></div></div><span class="chev" aria-hidden="true"></span></summary>
       <div class="fold-body">    <div class="rates" id="rates"></div>
   </div>
     </details>
@@ -617,7 +636,7 @@ img{max-width:100%;display:block}
       <summary><div class="section-head reveal">
       <p class="eyebrow">How it works</p>
       <h2 style="margin-top:.6rem">How it works</h2>
-    </div><span class="chev" aria-hidden="true"></span></summary>
+    <ol class="teaser tsteps"><li>Free meet &amp; greet</li><li>One intake form</li><li>Visits with photos</li></ol></div><span class="chev" aria-hidden="true"></span></summary>
       <div class="fold-body">    <div class="steps">
       <div class="glass step reveal"><h3>Free meet &amp; greet</h3><p>We come to you, meet your pet, and go over the routine.</p></div>
       <div class="glass step reveal"><h3>One intake form</h3><p>Feeding, quirks, entry, vet and emergency contact. Once, then it's on our phones at your door.</p></div>
@@ -629,7 +648,7 @@ img{max-width:100%;display:block}
 
   <section id="why">
     <details class="fold">
-      <summary><div class="section-head reveal"><p class="eyebrow">Why Paws United</p><h2 style="margin-top:.6rem">Real people. Your pet's people.</h2></div><span class="chev" aria-hidden="true"></span></summary>
+      <summary><div class="section-head reveal"><p class="eyebrow">Why Paws United</p><h2 style="margin-top:.6rem">Real people. Your pet's people.</h2><div class="teaser"><span class="tz chip">Two sitters, both known by name</span><span class="tz chip">Photo after every visit</span><span class="tz chip">Licensed vet tech on the team</span></div></div><span class="chev" aria-hidden="true"></span></summary>
       <div class="fold-body"><div class="band reveal">
       <img class="band-img" src="img/scrubs-cat.jpg" alt="A vet tech in scrubs holding a white cat" loading="lazy">
       <div>
@@ -652,7 +671,7 @@ img{max-width:100%;display:block}
       <summary><div class="section-head reveal">
       <p class="eyebrow">About us</p>
       <h2 style="margin-top:.6rem">Two people. Your pets will know both.</h2>
-    </div><span class="chev" aria-hidden="true"></span></summary>
+    <div class="teaser tpeople"><span class="tav"><span class="ph">?</span></span><span class="tav">M</span><span class="tnames"><span class="ph">[Her name]</span>, LVT &amp; Matt</span></div></div><span class="chev" aria-hidden="true"></span></summary>
       <div class="fold-body">    <div class="team">
       <div class="glass person reveal">
         <div class="portrait" role="img" aria-label="Photo coming soon"><span>Photo</span></div>
@@ -711,7 +730,7 @@ img{max-width:100%;display:block}
       <summary><div class="section-head reveal">
       <p class="eyebrow">Questions</p>
       <h2 style="margin-top:.6rem">Questions</h2>
-    </div><span class="chev" aria-hidden="true"></span></summary>
+    <div class="teaser"><span class="tz chip">Who comes to my house?</span><span class="tz chip">My pet takes meds?</span><span class="tz chip">Cancellations?</span></div></div><span class="chev" aria-hidden="true"></span></summary>
       <div class="fold-body">    <div class="faq">
       <details class="glass"><summary>Who comes to my house?</summary><p>One of the two of us, and you'll have met both at the meet &amp; greet.</p></details>
       <details class="glass"><summary>My pet takes medication. Is that okay?</summary><p>Yes. Our owner is a licensed veterinary technician, so pills, insulin, injections and post-op care are all fine. Bring the routine from your vet and we follow it exactly.</p></details>
@@ -822,6 +841,7 @@ $('[data-rate="dropin-from"]').innerHTML = `from ${money(RATES.dropIn[0][1])} <s
 $('[data-rate="med"]').innerHTML = `+${money(RATES.medication)} <small>/ visit</small>`;
 $('[data-rate="overnight"]').innerHTML = `${money(RATES.overnight)} <small>/ night</small>`;
 $('[data-rate="weekly"]').innerHTML = `${money(RATES.packages[0][1])} <small>/ visit</small>`;
+$('[data-rate="t-dropin"]').textContent = money(RATES.dropIn[0][1]); $('[data-rate="t-night"]').textContent = money(RATES.overnight); $('[data-rate="t-med"]').textContent = "+" + money(RATES.medication);
 $("#faq-cancel").textContent = RATES.cancellation.map(([w, r]) => `${w}: ${r.toLowerCase()}`).join(". ") + ".";
 
 // live clock in the console card
@@ -928,6 +948,7 @@ litPass();
   backdrop.addEventListener("click", hidePop);
   pop.querySelector(".cta-close").addEventListener("click", hidePop);
   pop.querySelector(".btn").addEventListener("click", hidePop);
+  if (location.search.includes("nosplash")) { splash.remove(); pop.remove(); backdrop.remove(); return; }
   if (reduced) { splash.remove(); showPop(); return; }
   let finished = false;
   const finish = () => { if (finished) return; finished = true; splash.classList.add("done"); document.body.style.overflow = ""; document.querySelector("main").classList.add("page-enter"); setTimeout(() => splash.remove(), 1100); setTimeout(showPop, 1000); };
