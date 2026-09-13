@@ -369,6 +369,7 @@ img{max-width:100%;display:block}
 .wz-count{font-weight:700;font-size:.85rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .wz-bar{flex:1;height:4px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
 .wz-bar i{display:block;height:100%;width:12%;background:linear-gradient(90deg,var(--mint),var(--amber));border-radius:999px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.wz-viewport{overflow:hidden;min-width:0;clip-path:inset(0)}
 .wz-track{display:flex;width:100%;min-width:0;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
 .wz-step{flex:0 0 100%;width:100%;min-width:0;box-sizing:border-box;display:grid;gap:.7rem;align-content:start;min-height:150px;padding:.2rem .1rem;opacity:.35;transition:opacity .4s ease}
 .wz-step.active{opacity:1}
@@ -733,7 +734,7 @@ img{max-width:100%;display:block}
       </div>
       <form class="glass reveal wizard" id="wizard" action="#" method="post" novalidate>
         <div class="wz-head"><span class="wz-count" id="wzcount">1 / 8</span><span class="wz-bar"><i id="wzbar"></i></span></div>
-        <div class="wz-track" id="wztrack">
+        <div class="wz-viewport"><div class="wz-track" id="wztrack">
           <section class="wz-step" data-key="name"><label for="f-name">What's your name?</label><input id="f-name" type="text" name="name" required autocomplete="name" placeholder="First and last"></section>
           <section class="wz-step" data-key="phone"><label for="f-phone">Best number to text you?</label><input id="f-phone" type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="(610) 555-0100"></section>
           <section class="wz-step" data-key="email"><label for="f-email">And your email?</label><input id="f-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com"></section>
@@ -749,7 +750,7 @@ img{max-width:100%;display:block}
           <section class="wz-step" data-key="dates"><label for="f-dates">When?</label><input id="f-dates" type="text" name="dates" required placeholder="e.g. Oct 3-6, or Mon/Wed/Fri midday"></section>
           <section class="wz-step" data-key="notes"><label for="f-notes">Anything we should know? <small>(optional)</small></label><textarea id="f-notes" name="notes" placeholder="Quirks, routine, any meds, where the treats are"></textarea></section>
           <section class="wz-step wz-done"><span class="wz-q">All set. Send it over.</span><dl class="wz-summary" id="wzsummary"></dl><a class="btn btn-primary" id="wzsend" href="#">Send request by email</a><p class="fine">Opens your mail app with everything filled in. We text back the same day.</p></section>
-        </div>
+        </div></div>
         <div class="wz-nav"><button type="button" class="btn btn-ghost" id="wzback">Back</button><button type="button" class="btn btn-primary" id="wznext">Next</button></div>
         <p class="wz-err" id="wzerr" hidden>Needed before we can move on.</p>
       </form>
