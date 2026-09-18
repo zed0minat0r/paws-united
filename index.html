@@ -165,11 +165,12 @@ section{padding:3rem 0}
 .rate-block td:last-child{text-align:right;padding-left:1rem;font-weight:800;font-variant-numeric:tabular-nums;font-family:var(--display);font-size:1rem;color:var(--mint);max-width:55%}
 .rate-block td small{display:block;color:var(--muted);font-weight:400;font-family:var(--body);font-size:.82rem}
 .rate-block .foot{color:var(--muted);font-size:.85rem;margin-top:.7rem}
+.rate-block.stack td{display:block;padding:0}.rate-block.stack tr{display:block;padding:.5rem 0;border-top:1px solid var(--line)}.rate-block.stack tr:first-child{border-top:0}.rate-block.stack td:last-child{text-align:left;padding-left:0;font-size:.92rem;max-width:none;margin-top:.1rem}
 
 /* how it works */
 .steps{display:grid;gap:1.2rem;counter-reset:step}
 .step{position:relative;padding:1.2rem 1.2rem 1.2rem 4rem}
-.step::before{counter-increment:step;content:counter(step);position:absolute;top:1.1rem;left:1.1rem;width:2rem;height:2rem;border-radius:50%;background:var(--mint-dim);color:var(--mint);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.9rem}
+.step::before{counter-increment:step;content:counter(step);position:absolute;inset:auto;top:1.1rem;left:1.1rem;padding:0;-webkit-mask:none;mask:none;width:2rem;height:2rem;border-radius:50%;background:var(--mint-dim);color:var(--mint);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.9rem}
 .step p{color:var(--muted);margin-top:.4rem;font-size:.95rem}
 
 /* band */
@@ -197,6 +198,7 @@ section{padding:3rem 0}
 .review figcaption{font-size:.85rem;color:var(--muted);font-weight:600}
 
 /* service area map */
+.area{display:grid;gap:1.6rem}
 .map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line-2);aspect-ratio:4/3;background:var(--bg2)}
 .map iframe{width:100%;height:100%;border:0;display:block;filter:invert(.92) hue-rotate(160deg) saturate(.55) brightness(.95) contrast(.95)}
 .zips{margin-top:.8rem}
@@ -238,6 +240,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;display:grid;gap:.6rem;co
 footer a{text-decoration:none}
 footer .legal{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
 .foot-brand{display:flex;align-items:center;gap:.6rem}
+.foot-brand img{flex:none}
 
 .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1.4fr;gap:.6rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));background:rgba(15,26,20,.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
 
@@ -257,7 +260,7 @@ img{max-width:100%;display:block}
 @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .motion .eyebrow{position:relative;padding-left:1.6rem}
 .motion .eyebrow::before{content:"";position:absolute;left:0;top:50%;height:2px;width:1.1rem;background:var(--mint);transform-origin:left;transform:scaleX(0);transition:transform .7s ease .2s}
-.motion .eyebrow.on::before,.motion .section-head:not(.pre) .eyebrow::before{transform:scaleX(1)}
+.motion .eyebrow.on::before,.motion .section-head:not(.pre) .eyebrow::before,.motion .reveal:not(.pre)>.eyebrow::before{transform:scaleX(1)}
 
 /* gold glow: a separate layer that fades in and breathes, so nothing pops */
 .glass,.faq details,.map,.areas span,form{position:relative}
@@ -396,7 +399,7 @@ img{max-width:100%;display:block}
 .fold summary{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.1rem 1.1rem 1.2rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .5s ease,background .3s ease}
 .fold summary:hover,.fold summary.lit{border-color:rgba(234,196,106,.35)}
 .fold[open] summary{border-radius:var(--r) var(--r) 0 0;border-bottom-color:transparent}
-.fold[open] .fold-body{border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);padding:1.2rem 1.1rem 1.4rem;background:rgba(214,232,214,.025)}
+.fold[open] .fold-body{border:1px solid var(--line);border-top:0;border-radius:0 0 var(--r) var(--r);padding:1.2rem 1.1rem 1.4rem;background:var(--surface);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .fold[open] .teaser{display:none}
 .teaser{display:flex;flex-wrap:wrap;gap:.5rem .6rem;margin:.9rem 0 0;padding:0;list-style:none;align-items:center}
 .tz{display:inline-flex;align-items:baseline;gap:.35rem;font-size:.86rem;color:var(--muted);font-weight:600}
@@ -448,7 +451,7 @@ img{max-width:100%;display:block}
   .needs{grid-template-columns:repeat(4,1fr)}
   .need{flex-direction:column;gap:.7rem;padding:1.4rem}
   .services{grid-template-columns:repeat(4,1fr);gap:1.1rem}
-  .svc{grid-template-columns:1fr;padding:1.5rem;gap:.7rem}
+  .svc{grid-template-columns:1fr;grid-template-rows:auto auto auto 1fr auto;align-content:start;padding:1.5rem;gap:.7rem}
   .svc .price{grid-column:1;grid-row:auto;text-align:left}
   .svc .price small{display:inline}
   .rates{grid-template-columns:repeat(3,1fr);gap:1.1rem}
@@ -786,7 +789,7 @@ img{max-width:100%;display:block}
 
 <div class="wrap">
   <footer>
-    <div class="foot-brand"><img src="img/logo-badge.svg" width="40" height="40" alt="" loading="lazy">© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</div>
+    <div class="foot-brand"><img src="img/logo-badge.svg" width="40" height="40" alt="" loading="lazy"><span>© 2026 Paws United Pet Sitting <span class="ph">LLC (once formed)</span> · Phoenixville, PA</span></div>
     <div class="legal"><a href="tel:+10000000000">(000) 000-0000</a><a href="mailto:hello@pawsunited.com">hello@pawsunited.com</a><a href="#faq">Cancellation policy</a><span>Photos via Unsplash</span></div>
   </footer>
 </div>
@@ -842,6 +845,7 @@ $("#rates").innerHTML = [
   block("Recurring clients", RATES.packages.map(([l, p, u]) => [l, money(p), u]), "Your slot is held. Cheapest way to book."),
   block("Cancellation", RATES.cancellation)
 ].join("");
+$("#rates .rate-block:last-child").classList.add("stack");
 
 $('[data-rate="dropin-from"]').innerHTML = `from ${money(RATES.dropIn[0][1])} <small>/ visit</small>`;
 $('[data-rate="med"]').innerHTML = `+${money(RATES.medication)} <small>/ visit</small>`;
