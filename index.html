@@ -78,7 +78,7 @@ a{color:inherit}
 .brand::after{content:"";position:absolute;left:4px;right:0;bottom:0;height:1.5px;background:linear-gradient(90deg,rgba(234,196,106,.9),rgba(234,196,106,0));border-radius:2px}
 .wordmark{display:flex;flex-direction:column;line-height:1;gap:.22rem;padding-bottom:.25rem}
 .wm-name{font-size:1.2rem;background:linear-gradient(92deg,#F1F5EC,#EAC46A 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.wm-sub{font-family:var(--body);font-weight:700;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
+.wm-sub{font-family:var(--body);font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
 @media (max-width:420px){.wm-sub{display:none}.wm-name{font-size:1.05rem}.brand .mark{width:46px}}
 .brand .mark{width:56px;height:auto;flex:none;margin-bottom:-.1rem;filter:drop-shadow(0 0 10px rgba(234,196,106,.55));transition:transform .3s ease}
 .brand:hover .mark{transform:translateX(3px)}
@@ -469,6 +469,13 @@ img{max-width:100%;display:block}
   .book{grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:start}
   form{padding:1.8rem}
 }
+/* launch audit, 2026-09-24: everything tappable is at least 44px, checkbox rows included */
+.chk{display:flex;align-items:center;gap:.6rem;min-height:44px;cursor:pointer}
+.chk input{width:20px;height:20px;flex:0 0 auto;accent-color:var(--mint)}
+.nav a{display:inline-block;padding:.65rem 0}
+.legal a{display:inline-block;padding:.7rem 0;min-height:44px}
+.legal a+a{margin-left:0}
+.nav{align-items:center}
 </style>
 </head>
 <body>
@@ -770,10 +777,10 @@ img{max-width:100%;display:block}
           <section class="wz-step" data-key="pets"><label for="f-pets">Who are we meeting?</label><input id="f-pets" type="text" name="pets" required placeholder="e.g. Biscuit, 3 yr lab · Mochi, 11 yr cat"></section>
           <section class="wz-step" data-key="service"><span class="wz-q">What do you need?</span>
             <div class="checks-inline">
-              <label><input type="checkbox" name="svc" value="Drop-in visits">Drop-in visits</label>
-              <label><input type="checkbox" name="svc" value="Meds or injections">Meds or injections</label>
-              <label><input type="checkbox" name="svc" value="Overnights">Overnights</label>
-              <label><input type="checkbox" name="svc" value="Weekly recurring">Weekly recurring</label>
+              <label class="chk"><input type="checkbox" name="svc" value="Drop-in visits">Drop-in visits</label>
+              <label class="chk"><input type="checkbox" name="svc" value="Meds or injections">Meds or injections</label>
+              <label class="chk"><input type="checkbox" name="svc" value="Overnights">Overnights</label>
+              <label class="chk"><input type="checkbox" name="svc" value="Weekly recurring">Weekly recurring</label>
             </div></section>
           <section class="wz-step" data-key="dates"><label for="f-dates">When?</label><input id="f-dates" type="text" name="dates" required placeholder="e.g. Oct 3-6, or Mon/Wed/Fri midday"></section>
           <section class="wz-step" data-key="notes"><label for="f-notes">Anything we should know? <small>(optional)</small></label><textarea id="f-notes" name="notes" placeholder="Quirks, routine, any meds, where the treats are"></textarea></section>
